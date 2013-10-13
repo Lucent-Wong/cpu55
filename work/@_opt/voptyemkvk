@@ -1,0 +1,40 @@
+library verilog;
+use verilog.vl_types.all;
+entity mux32x32 is
+    port(
+        \select\        : in     vl_logic_vector(4 downto 0);
+        data_in_0       : in     vl_logic_vector(31 downto 0);
+        data_in_1       : in     vl_logic_vector(31 downto 0);
+        data_in_2       : in     vl_logic_vector(31 downto 0);
+        data_in_3       : in     vl_logic_vector(31 downto 0);
+        data_in_4       : in     vl_logic_vector(31 downto 0);
+        data_in_5       : in     vl_logic_vector(31 downto 0);
+        data_in_6       : in     vl_logic_vector(31 downto 0);
+        data_in_7       : in     vl_logic_vector(31 downto 0);
+        data_in_8       : in     vl_logic_vector(31 downto 0);
+        data_in_9       : in     vl_logic_vector(31 downto 0);
+        data_in_10      : in     vl_logic_vector(31 downto 0);
+        data_in_11      : in     vl_logic_vector(31 downto 0);
+        data_in_12      : in     vl_logic_vector(31 downto 0);
+        data_in_13      : in     vl_logic_vector(31 downto 0);
+        data_in_14      : in     vl_logic_vector(31 downto 0);
+        data_in_15      : in     vl_logic_vector(31 downto 0);
+        data_in_16      : in     vl_logic_vector(31 downto 0);
+        data_in_17      : in     vl_logic_vector(31 downto 0);
+        data_in_18      : in     vl_logic_vector(31 downto 0);
+        data_in_19      : in     vl_logic_vector(31 downto 0);
+        data_in_20      : in     vl_logic_vector(31 downto 0);
+        data_in_21      : in     vl_logic_vector(31 downto 0);
+        data_in_22      : in     vl_logic_vector(31 downto 0);
+        data_in_23      : in     vl_logic_vector(31 downto 0);
+        data_in_24      : in     vl_logic_vector(31 downto 0);
+        data_in_25      : in     vl_logic_vector(31 downto 0);
+        data_in_26      : in     vl_logic_vector(31 downto 0);
+        data_in_27      : in     vl_logic_vector(31 downto 0);
+        data_in_28      : in     vl_logic_vector(31 downto 0);
+        data_in_29      : in     vl_logic_vector(31 downto 0);
+        data_in_30      : in     vl_logic_vector(31 downto 0);
+        data_in_31      : in     vl_logic_vector(31 downto 0);
+        data_out        : out    vl_logic_vector(31 downto 0)
+    );
+end mux32x32;

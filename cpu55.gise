@@ -21,8 +21,68 @@
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="cpu55.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="decoder_tb.fdo"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="mux32x32_tb.fdo"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="myreg_tb.fdo"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="regfile_tb.fdo"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_LOG" xil_pn:name="vsim.wlf"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="wfb_tb.fdo"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="work"/>
+  </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1381571898" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1381571897">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1381584923" xil_pn:in_ck="3895918258876664209" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1381584923">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="decoder.v"/>
+      <outfile xil_pn:name="decoder_tb.v"/>
+      <outfile xil_pn:name="mux32x32.v"/>
+      <outfile xil_pn:name="mux32x32_tb.v"/>
+      <outfile xil_pn:name="myreg_tb.v"/>
+      <outfile xil_pn:name="reg.v"/>
+      <outfile xil_pn:name="regfile.v"/>
+      <outfile xil_pn:name="regfile_tb.v"/>
+      <outfile xil_pn:name="wfb_selector.v"/>
+      <outfile xil_pn:name="wfb_tb.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1381583175" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="4042252304724798474" xil_pn:start_ts="1381583175">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1381583175" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="5488896849273493448" xil_pn:start_ts="1381583175">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1381577869" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-5912181500404697730" xil_pn:start_ts="1381577869">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1381584923" xil_pn:in_ck="3895918258876664209" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1381584923">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="decoder.v"/>
+      <outfile xil_pn:name="decoder_tb.v"/>
+      <outfile xil_pn:name="mux32x32.v"/>
+      <outfile xil_pn:name="mux32x32_tb.v"/>
+      <outfile xil_pn:name="myreg_tb.v"/>
+      <outfile xil_pn:name="reg.v"/>
+      <outfile xil_pn:name="regfile.v"/>
+      <outfile xil_pn:name="regfile_tb.v"/>
+      <outfile xil_pn:name="wfb_selector.v"/>
+      <outfile xil_pn:name="wfb_tb.v"/>
+    </transform>
+    <transform xil_pn:end_ts="1381584925" xil_pn:in_ck="3895918258876664209" xil_pn:name="TRAN_MSimulateBehavioralModel" xil_pn:prop_ck="3955237546928051390" xil_pn:start_ts="1381584923">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="regfile_tb.fdo"/>
+      <outfile xil_pn:name="vsim.wlf"/>
+      <outfile xil_pn:name="work"/>
+    </transform>
+  </transforms>
 
 </generated_project>
