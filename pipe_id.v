@@ -21,5 +21,7 @@
 module pipe_id(
     );
 
-
+regfile rf();
+controlunit cu();
+mux2x32 rt_mux();//decide if rt euqals $0
 endmodule

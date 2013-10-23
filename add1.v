@@ -3,14 +3,14 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:59:53 10/14/2013 
+// Create Date:    16:08:19 09/04/2012 
 // Design Name: 
-// Module Name:    pipe_exe 
+// Module Name:    add1 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
 // Description: 
-//
+//			È«¼ÓÆ÷
 // Dependencies: 
 //
 // Revision: 
@@ -18,9 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pipe_exe(
+module add1(
+    input a,
+    input b,
+    input ci,
+    output s,
+    output co
     );
 
-alu alu();
-
+assign s = a ^ b ^ ci;
+assign co = (a & b) | (a & ci) | (b & ci);
 endmodule

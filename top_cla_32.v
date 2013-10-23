@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:59:53 10/14/2013 
+// Create Date:    09:31:42 10/17/2012 
 // Design Name: 
-// Module Name:    pipe_exe 
+// Module Name:    top_cla_32 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,9 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pipe_exe(
+module top_cla_32(
+			input [31:0] a, b, //input A and B
+			input c_in, //the carry num
+			output c_out, // the carry num of result
+			output [31:0] s //result
     );
 
-alu alu();
-
+wire g, p;
+cla_32 cla0(a, b, c_in, g, p, s);
+assign c_out = g | p & c_in;
 endmodule

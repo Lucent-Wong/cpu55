@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:59:53 10/14/2013 
+// Create Date:    11:12:46 10/16/2012 
 // Design Name: 
-// Module Name:    pipe_exe 
+// Module Name:    cla_8 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,9 +18,19 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pipe_exe(
+module cla_8(
+    input [7:0] a,
+    input [7:0] b,
+    input c_in,
+    output g_out,
+    output p_out,
+    output [7:0] s
     );
 
-alu alu();
+wire [1:0] g, p;
+wire c_out;
 
+cla_4 cla0(a[3:0], b[3:0], c_in, g[0], p[0], s[3:0]);
+cla_4 cla1(a[7:4], b[7:4], c_out, g[1], p[1], s[7:4]);
+g_p g_p0(g, p, c_in, g_out, p_out, c_out);
 endmodule

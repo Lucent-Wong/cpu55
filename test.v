@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:59:53 10/14/2013 
+// Create Date:    10:18:11 10/16/2013 
 // Design Name: 
-// Module Name:    pipe_exe 
+// Module Name:    test 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,9 +18,12 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pipe_exe(
+module test(
+    input in1,
+    input [32:0] in2,
+    output out1,
+    output [32:0] out2
     );
 
-alu alu();
 
 endmodule
