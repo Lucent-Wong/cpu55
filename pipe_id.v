@@ -25,4 +25,5 @@ regfile rf();
 controlunit cu();
 mux2x32 rt_mux();//decide if rt euqals $0
 whb_selector();//put in front of wd
+ext();
 endmodule
