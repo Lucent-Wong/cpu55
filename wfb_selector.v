@@ -18,9 +18,9 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module wfb_selector(
+module whb_selector(
 		input [31:0] data_in,
-		input sign_extend,
+		//input sign_extend,
 		input w,//word
 		input h,//half word
 		input b,//bype		

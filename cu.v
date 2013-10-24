@@ -29,6 +29,7 @@ module controlunit(
 		input [4:0] rd,
 		//input [4:0] sa,//not used so far
 		output rt_sel,	
+		output [3:0] whb,//whbz
 		//
 		output [3:0] aluc,
 		output wrf,
@@ -126,35 +127,38 @@ assign i_mtc0 = ~op[5] &&  op[4] && ~op[3] && ~op[2] && ~op[1] && ~op[0] && ~rs[
 
 //alu的控制
 assign aluc[0] = i_subu || i_sub || i_or  || i_nor  || i_srl || i_srlv || i_slt || i_ori  || i_slti || i_beq   || i_bne || bgez || bgtz || blez || bltz;
-assign aluc[1] = i_add  || i_sub || i_xor || i_nor  || i_sll || i_sllv || i_slt || i_sltu || i_addi || i_xori  || i_slti || i_sltiu || i_lw  || i_sw || i_beq || i_bne || bgez || bgtz || blez || bltz;
+assign aluc[1] = i_add  || i_sub || i_xor || i_nor  || i_sll || i_sllv || i_slt || i_sltu || i_addi || i_xori  || i_slti || i_sltiu || i_lw  || i_sw || i_lbu || i_lhu || i_lb || i_lh || i_beq || i_bne || bgez || bgtz || blez || bltz;
 assign aluc[2] = i_and  || i_or  || i_xor || i_nor  || i_sra || i_srav || i_sll || i_sllv || i_srl  || i_srlv  || i_andi || i_ori   || i_xori;
 assign aluc[3] = i_sra  || i_srav|| i_sll || i_sllv || i_srl || i_srlv || i_slt || i_sltu || i_slti || i_sltiu || i_lui;
 //写寄存器组信号
 assign wrf = i_add || i_addu || i_sub   || i_subu || i_and  || i_or   || i_xor  || i_nor   || i_slt  || i_sltu || 
 				 i_sll || i_srl  || i_sra   || i_sllv || i_srlv || i_srav || i_addi || i_addiu || i_andi || i_ori  ||
-				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw   || i_jal ||  i_jalr;
+				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw || i_lbu || i_lhu || i_lb || i_lh || i_jal ||  i_jalr;
 //shamt（instr[10:6]）扩展控制信号，高电平：符号位扩展， 低电平：零扩展
 assign sext_s = i_sll || i_srl || i_sra;
 //imm（instr[15:0]）扩展控制信号， 高电平：符号扩展，低电平：零扩展
-assign sext_i = i_addi || i_addiu || i_slti || i_sltiu || i_lw || i_sw;
+assign sext_i = i_addi || i_addiu || i_slti || i_sltiu || i_lw || i_sw || i_lbu || i_lhu || i_lb || i_lh;
 //alu源操作数控制信号，高电平: 源操作数来自移位扩展输入， 低电平：源操作数来自rf的rd1输出
 assign shift = i_sll || i_srl || i_sra;
 //npc选择信号，00：pc+4， 01：jr（npc来自于rf的源操作数）, 10: beq/bne(npc来自于imm32)
 assign pcsource[0] = i_jr || i_j || i_jal || i_jalr; 
 assign pcsource[1] = (i_beq && zero) || (i_bne && zero  == 1'b0) || (bgez && (zero == 1'b1 || negtive == 1'b0)) || (bgtz && (zero == 1'b0 && negtive == 1'b0)) || (blez && (zero == 1'b1 || negtive == 1'b1)) || (bltz (zero == 1'b0 && negtive == 1'b1)) || i_j || i_jal;
 //regwa选择信号，高电平，目的寄存器为instr[20:16]rt, 低电平，目的寄存器为instr[15:11]rd
-assign regwa = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw;
+assign regwa = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_lbu || i_lhu || i_lb || i_lh;
 //alub控制信号， 高电平imm32，低电平rd2
-assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw;
+assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw || i_lbu || i_lhu || i_lb || i_lh;
 //dmem写控制信号，高电平，写数据存储器
 assign wena = i_sw;
 //写rf寄存器组数据控制信号，高电平：数据寄存器取出的值，低电平，wd
-assign wdc = i_lw;
+assign wdc = i_lw || i_lbu || i_lhu || i_lb || i_lh;
 //写数据寄存器的数据选择信号，高电平：选择pc+8， 低电平， alud
 //选择pc+8， alud = 1， wdc = 0
 assign aludc = i_jal || i_jalr;
 
 //*******************add by wong***************************/
 assign rt_sel = bgez || bgtz || blez || bltz;
-
+assign whb[3] = i_lw;
+assign whb[2] = i_lh;
+assign whb[1] = i_lb;
+assign whb[0] = i_lhu || lbu;
 endmodule

@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module wfb_tb;
+module whb_tb;
 
 	// Inputs
 	reg [31:0] data_in;
@@ -36,7 +36,7 @@ module wfb_tb;
 	wire [31:0] data_out;
 
 	// Instantiate the Unit Under Test (UUT)
-	wfb_selector uut (
+	whb_selector uut (
 		.data_in(data_in), 
 		.sign_extend(sign_extend), 
 		.w(w), 
