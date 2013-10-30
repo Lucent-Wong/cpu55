@@ -8,51 +8,67 @@
 # //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
 # //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
 # //
-# do {regfile_tb.fdo} 
+# do {datamen_tb.fdo} 
 # ** Warning: (vlib-34) Library already exists at "work".
 # 
 # Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
-# -- Compiling module myreg
+# -- Compiling module data_ram
 # 
 # Top level modules:
-# 	myreg
+# 	data_ram
 # Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
-# -- Compiling module mux32x32
+# -- Compiling module datamen_tb
 # 
 # Top level modules:
-# 	mux32x32
-# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
-# -- Compiling module decoder
-# 
-# Top level modules:
-# 	decoder
-# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
-# -- Compiling module regfile
-# 
-# Top level modules:
-# 	regfile
-# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
-# -- Compiling module regfile_tb
-# 
-# Top level modules:
-# 	regfile_tb
+# 	datamen_tb
 # Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 22 2012
 # -- Compiling module glbl
 # 
 # Top level modules:
 # 	glbl
-# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -voptargs=\"+acc\" -t 1ps work.regfile_tb glbl 
-# Loading work.regfile_tb(fast)
-# Loading work.regfile(fast)
-# Loading work.decoder(fast)
-# Loading work.myreg(fast)
-# Loading work.mux32x32(fast)
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -voptargs=\"+acc\" -t 1ps work.datamen_tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# Loading work.datamen_tb(fast)
+# Loading work.data_ram(fast)
 # Loading work.glbl(fast)
 # .main_pane.wave.interior.cs.body.pw.wf
 # .main_pane.structure.interior.cs.body.struct
 # .main_pane.objects.interior.cs.body.tree
-run 400
-run 400ns
-run 400ns
-run 400ns
-run 400ns
+restart
+# Loading work.datamen_tb(fast)
+# Loading work.data_ram(fast)
+# Loading work.glbl(fast)
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+
+restart
+# Loading work.datamen_tb(fast)
+# Loading work.data_ram(fast)
+# Loading work.glbl(fast)
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run

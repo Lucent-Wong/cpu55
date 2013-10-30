@@ -29,7 +29,10 @@ module controlunit(
 		input [4:0] rd,
 		//input [4:0] sa,//not used so far
 		output rt_sel,	
-		output [3:0] whb,//whbz
+		output w,
+		output h,
+		output b,
+		output z,
 		//
 		output [3:0] aluc,
 		output wrf,
@@ -156,9 +159,9 @@ assign wdc = i_lw || i_lbu || i_lhu || i_lb || i_lh;
 assign aludc = i_jal || i_jalr;
 
 //*******************add by wong***************************/
-assign rt_sel = bgez || bgtz || blez || bltz;
-assign whb[3] = i_lw;
-assign whb[2] = i_lh;
-assign whb[1] = i_lb;
-assign whb[0] = i_lhu || lbu;
+assign rt_sel = bgez || bgtz || blez || bltz;//选择alu第二个输入为0
+assign w = i_lw || i_sw;
+assign h = i_lh || i_lhu || i_sh;
+assign b = i_lb || i_lbu || i_sb;
+assign z = i_lhu || lbu;
 endmodule

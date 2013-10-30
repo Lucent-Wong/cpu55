@@ -8,8 +8,8 @@
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe</ClosedNode>
-         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id/rf - regfile</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus4 - top_cla_32</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus8 - top_cla_32</ClosedNode>
          <ClosedNode>/regfile D:|cpu55|regfile.v</ClosedNode>
@@ -17,9 +17,9 @@
       <SelectedItems>
          <SelectedItem>data_ram (D:/cpu55/data_ram.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >9</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000016c000000020000000000000000000000000200000064ffffffff0000008100000003000000020000016c0000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a3000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a30000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
       <CurrentItem>data_ram (D:/cpu55/data_ram.v)</CurrentItem>
    </ItemView>
@@ -44,7 +44,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000150000000040101000100000000000000000000000064ffffffff0000008100000000000000040000003d0000000100000000000000240000000100000000000000780000000100000000000000770000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000252000000040101000100000000000000000000000064ffffffff0000008100000000000000040000003d0000000100000000000000240000000100000000000000780000000100000000000001790000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>D:\cpu55\add1.v</CurrentItem>
    </ItemView>
@@ -56,7 +56,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000161000000010001000100000000000000000000000064ffffffff000000810000000000000001000001610000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000153000000010001000100000000000000000000000064ffffffff000000810000000000000001000001530000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>work</CurrentItem>
    </ItemView>
@@ -74,7 +74,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000161000000010000000100000000000000000000000064ffffffff000000810000000000000001000001610000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000153000000010000000100000000000000000000000064ffffffff000000810000000000000001000001530000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>

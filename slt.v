@@ -31,6 +31,6 @@ wire [31:0] c_r;
 wire overflow;
 
 addsub32 addsub_slt(a, b, {aluc, 1'b1}, c_r, overflow, carry, negative);
-assign c = aluc ? (negative ? 32'b1 : 32'b0) : (carry ? 32'b1 : 32'b0);
+assign c = aluc ? (negative || (overflow && a[31]) ? 32'b1 : 32'b0) : (carry ? 32'b1 : 32'b0);
 
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:59:53 10/14/2013 
+// Create Date:    13:25:05 10/29/2013 
 // Design Name: 
-// Module Name:    pipe_exe 
+// Module Name:    pipe_mem 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,21 +18,18 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module pipe_exe(
-input w,
-input h,
-input b,
-
-output e_w,
-output e_h,
-output e_b
+module pipe_mem(
+	input w,
+	input h,
+	input b,
+	
+	input clk,
+	input ram_ena,
+	input ram_wena,
+	input [31:0] addr,
+	input [31:0] ram_indata,
+	output[31:0] ram_outdata
     );
 
-alu alu();
-
-
-assign e_w = w;
-assign e_h = h;
-assign e_b = b;
-
+ram #(8, 7, 0) dram(clk, ram_ena, ram_wena, addr[6:2], ram_indata, ram_outdata);
 endmodule

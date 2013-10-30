@@ -34,5 +34,6 @@ dffe #(32) pcreg();
 pipe_if pipe_if();
 pipe_id pipe_id();
 pipe_exe pipe_exe();
+pipe_mem pipemem();
 pipe_wb pipe_wb();
 endmodule
