@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-//2013 10 29 ÆúÓÃ
+//2013 10 29 abandoned
 module whb_selector(
 		input [31:0] data_in,
 		//input sign_extend,

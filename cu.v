@@ -23,7 +23,7 @@ module controlunit(
 		input [5:0] func,
 		input zero,
 		//add by wong
-		input negtive,
+		input negative,
 		input [4:0] rs,
 		input [4:0] rt,
 		input [4:0] rd,
@@ -107,7 +107,7 @@ assign i_jalr = r_type && ~func[5] && ~func[4] &&  func[3] && ~func[2] && ~func[
 //i_type
 assign i_bgez = ~op[5] && ~op[4] && ~op[3] && ~op[2] && ~op[1] &&  op[0] && ~rt[4] && ~rt[3] && ~rt[2] && ~rt[1] && rt[0];
 assign i_bgtz = ~op[5] && ~op[4] && ~op[3] &&  op[2] &&  op[1] &&  op[0];
-assign i_blez = ~op[5] && ~op[4] && ~op[3] && ~op[2] && ~op[1] && ~op[0];
+assign i_blez = ~op[5] && ~op[4] && ~op[3] && op[2] && op[1] && ~op[0];
 assign i_bltz = ~op[5] && ~op[4] && ~op[3] && ~op[2] && ~op[1] && op[0] && ~rt[4] && ~rt[3] && ~rt[2] && ~rt[1] && ~rt[0];
 assign i_lbu  = op[5] && ~op[4] && ~op[3] &&  op[2] && ~op[1] && ~op[0];
 assign i_lhu  = op[5] && ~op[4] && ~op[3] &&  op[2] && ~op[1] &&  op[0];
@@ -119,7 +119,7 @@ assign i_sh   = op[5] && ~op[4] &&  op[3] && ~op[2] && ~op[1] &&  op[0];
 assign i_break = r_type && ~func[5] && ~func[4] &&  func[3] &&  func[2] && ~func[1] && func[0];
 assign i_syscall = r_type && ~func[5] && ~func[4] &&  func[3] &&  func[2] && ~func[1] && ~func[0];
 //cp0
-assign i_eret = ~op[5] && op[4] && ~op[3] && ~op[2] && ~op[1] && ~op[0] && rs[4] && ~rs[3] && ~rs[3] && ~rs[2] && ~rs[1] && ~rs[0] && ~func[5] && func[4] && func[3] && ~func[2] && ~func[1] && ~func[0];;
+assign i_eret = ~op[5] && op[4] && ~op[3] && ~op[2] && ~op[1] && ~op[0] && rs[4] && ~rs[3] && ~rs[3] && ~rs[2] && ~rs[1] && ~rs[0] && ~func[5] && func[4] && func[3] && ~func[2] && ~func[1] && ~func[0];
 assign i_mfhi = r_type && ~func[5] &&  func[4] && ~func[3] && ~func[2] && ~func[1] && ~func[0];
 assign i_mflo = r_type && ~func[5] &&  func[4] && ~func[3] && ~func[2] &&  func[1] && ~func[0];
 assign i_mthi = r_type && ~func[5] &&  func[4] && ~func[3] && ~func[2] && ~func[1] &&  func[0];
@@ -129,39 +129,39 @@ assign i_mtc0 = ~op[5] &&  op[4] && ~op[3] && ~op[2] && ~op[1] && ~op[0] && ~rs[
 /**********************************************************/
 
 //alu的控制
-assign aluc[0] = i_subu || i_sub || i_or  || i_nor  || i_srl || i_srlv || i_slt || i_ori  || i_slti || i_beq   || i_bne || bgez || bgtz || blez || bltz;
-assign aluc[1] = i_add  || i_sub || i_xor || i_nor  || i_sll || i_sllv || i_slt || i_sltu || i_addi || i_xori  || i_slti || i_sltiu || i_lw  || i_sw || i_lbu || i_lhu || i_lb || i_lh || i_beq || i_bne || bgez || bgtz || blez || bltz;
+assign aluc[0] = i_subu || i_sub || i_or  || i_nor  || i_srl || i_srlv || i_slt || i_ori  || i_slti || i_beq   || i_bne /*add by wong*/|| i_bgez || i_bgtz || i_blez || i_bltz;
+assign aluc[1] = i_add  || i_sub || i_xor || i_nor  || i_sll || i_sllv || i_slt || i_sltu || i_addi || i_xori  || i_slti || i_sltiu || i_lw  || i_sw || i_beq || i_bne  /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh || i_bgez || i_bgtz || i_blez || i_bltz;
 assign aluc[2] = i_and  || i_or  || i_xor || i_nor  || i_sra || i_srav || i_sll || i_sllv || i_srl  || i_srlv  || i_andi || i_ori   || i_xori;
 assign aluc[3] = i_sra  || i_srav|| i_sll || i_sllv || i_srl || i_srlv || i_slt || i_sltu || i_slti || i_sltiu || i_lui;
 //写寄存器组信号
 assign wrf = i_add || i_addu || i_sub   || i_subu || i_and  || i_or   || i_xor  || i_nor   || i_slt  || i_sltu || 
 				 i_sll || i_srl  || i_sra   || i_sllv || i_srlv || i_srav || i_addi || i_addiu || i_andi || i_ori  ||
-				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw || i_lbu || i_lhu || i_lb || i_lh || i_jal ||  i_jalr;
+				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw || i_jal /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh ||  i_jalr;
 //shamt（instr[10:6]）扩展控制信号，高电平：符号位扩展， 低电平：零扩展
 assign sext_s = i_sll || i_srl || i_sra;
 //imm（instr[15:0]）扩展控制信号， 高电平：符号扩展，低电平：零扩展
-assign sext_i = i_addi || i_addiu || i_slti || i_sltiu || i_lw || i_sw || i_lbu || i_lhu || i_lb || i_lh;
+assign sext_i = i_addi || i_addiu || i_slti || i_sltiu || i_lw || i_sw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //alu源操作数控制信号，高电平: 源操作数来自移位扩展输入， 低电平：源操作数来自rf的rd1输出
 assign shift = i_sll || i_srl || i_sra;
 //npc选择信号，00：pc+4， 01：jr（npc来自于rf的源操作数）, 10: beq/bne(npc来自于imm32)
-assign pcsource[0] = i_jr || i_j || i_jal || i_jalr; 
-assign pcsource[1] = (i_beq && zero) || (i_bne && zero  == 1'b0) || (bgez && (zero == 1'b1 || negtive == 1'b0)) || (bgtz && (zero == 1'b0 && negtive == 1'b0)) || (blez && (zero == 1'b1 || negtive == 1'b1)) || (bltz (zero == 1'b0 && negtive == 1'b1)) || i_j || i_jal;
+assign pcsource[0] = i_jr || i_j || i_jal /*add by wong*/|| i_jalr; 
+assign pcsource[1] = (i_beq && zero) || (i_bne && zero  == 1'b0) /*add by wong*/|| (i_bgez && (zero == 1'b1 || negative == 1'b0)) || (i_bgtz && (zero == 1'b0 && negative == 1'b0)) || (i_blez && (zero == 1'b1 || negative == 1'b1)) || (i_bltz &&(zero == 1'b0 && negative == 1'b1)) || i_j || i_jal;
 //regwa选择信号，高电平，目的寄存器为instr[20:16]rt, 低电平，目的寄存器为instr[15:11]rd
-assign regwa = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_lbu || i_lhu || i_lb || i_lh;
+assign regwa = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //alub控制信号， 高电平imm32，低电平rd2
-assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw || i_lbu || i_lhu || i_lb || i_lh;
+assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //dmem写控制信号，高电平，写数据存储器
 assign wena = i_sw;
 //写rf寄存器组数据控制信号，高电平：数据寄存器取出的值，低电平，wd
-assign wdc = i_lw || i_lbu || i_lhu || i_lb || i_lh;
+assign wdc = i_lw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //写数据寄存器的数据选择信号，高电平：选择pc+8， 低电平， alud
 //选择pc+8， alud = 1， wdc = 0
-assign aludc = i_jal || i_jalr;
+assign aludc = i_jal /*add by wong*/|| i_jalr;
 
 //*******************add by wong***************************/
-assign rt_sel = bgez || bgtz || blez || bltz;//选择alu第二个输入为0
+assign rt_sel = i_bgez || i_bgtz || i_blez || i_bltz;//选择rf第二个输入为0
 assign w = i_lw || i_sw;
 assign h = i_lh || i_lhu || i_sh;
 assign b = i_lb || i_lbu || i_sb;
-assign z = i_lhu || lbu;
+assign z = i_lhu || i_lbu;
 endmodule

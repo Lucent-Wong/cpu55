@@ -107,7 +107,7 @@ module regfile(
 									.data_out(rdata1));
 									
 									
-		mux32x32 raddr2_select(	.select(raddr1),
+		mux32x32 raddr2_select(	.select(raddr2),
 									.data_in_0(sel[0]),
 									.data_in_1(sel[1]),
 									.data_in_2(sel[2]),
@@ -142,4 +142,39 @@ module regfile(
 									.data_in_31(sel[31]),
 									.data_out(rdata2));	
 	
+//////////output for test
+file_write_regfiles fw_rf(clk ,
+										sel[0], 
+										sel[1], 
+										sel[2], 
+										sel[3], 
+										sel[4],
+										sel[5],
+										sel[6],
+										sel[7],
+										sel[8],
+										sel[9],
+										sel[10], 
+										sel[11], 
+										sel[12], 
+										sel[13], 
+										sel[14],
+										sel[15],
+										sel[16],
+										sel[17],
+										sel[18],
+										sel[19],
+										sel[20], 
+										sel[21], 
+										sel[22], 
+										sel[23], 
+										sel[24],
+										sel[25],
+										sel[26],
+										sel[27],
+										sel[28],
+										sel[29],
+										sel[30], 
+										sel[31]);
+
 endmodule

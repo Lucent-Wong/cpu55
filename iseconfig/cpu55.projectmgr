@@ -8,20 +8,25 @@
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe/alu - alu/addsub - addsub32</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe/alu - alu/bs - bshifter32_carry</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe/alu - alu/sltsltu - slt</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id/rf - regfile</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus4 - top_cla_32</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus8 - top_cla_32</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_wb - pipe_wb</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipemem - pipe_mem</ClosedNode>
          <ClosedNode>/regfile D:|cpu55|regfile.v</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>data_ram (D:/cpu55/data_ram.v)</SelectedItem>
+         <SelectedItem>cu - controlunit (D:/cpu55/cu.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >9</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a3000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a30000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000163000000020000000000000000000000000200000064ffffffff000000810000000300000002000001630000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>data_ram (D:/cpu55/data_ram.v)</CurrentItem>
+      <CurrentItem>cu - controlunit (D:/cpu55/cu.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -29,13 +34,13 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000153000000010000000100000000000000000000000064ffffffff000000810000000000000001000001530000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -66,7 +71,6 @@
          <ClosedNode>Configure Target Device</ClosedNode>
          <ClosedNode>Design Utilities</ClosedNode>
          <ClosedNode>Implement Design</ClosedNode>
-         <ClosedNode>Synthesize - XST</ClosedNode>
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
@@ -84,35 +88,49 @@
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipemem - pipe_mem</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipe_exe - pipe_exe</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipe_id - pipe_id/rf - regfile</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipe_id - pipe_id/rf - regfile/fw_rf - file_write_regfiles</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipe_if - pipe_if</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipe_wb - pipe_wb</ClosedNode>
+         <ClosedNode>/cpu_tb D:|cpu55|cpu_tb.v/uut - cpu55/pipemem - pipe_mem</ClosedNode>
+         <ClosedNode>/cu_tb D:|cpu55|cu_tb.v</ClosedNode>
+         <ClosedNode>/datamen_tb D:|cpu55|datamen_tb.v</ClosedNode>
          <ClosedNode>/decoder_tb D:|cpu55|decoder_tb.v</ClosedNode>
          <ClosedNode>/mux32x32_tb D:|cpu55|mux32x32_tb.v</ClosedNode>
          <ClosedNode>/myreg_tb D:|cpu55|myreg_tb.v</ClosedNode>
          <ClosedNode>/regfile D:|cpu55|regfile.v</ClosedNode>
          <ClosedNode>/regfile_tb D:|cpu55|regfile_tb.v</ClosedNode>
          <ClosedNode>/regfile_tb D:|cpu55|regfile_tb.v/uut - regfile</ClosedNode>
+         <ClosedNode>/whb_tb D:|cpu55|wfb_tb.v</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Unassigned User Library Modules</SelectedItem>
+         <SelectedItem>cpu_tb (D:/cpu55/cpu_tb.v)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000156000000020000000000000000000000000200000064ffffffff000000810000000300000002000001560000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000128000000020000000000000000000000000200000064ffffffff000000810000000300000002000001280000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>Unassigned User Library Modules</CurrentItem>
+      <CurrentItem>cpu_tb (D:/cpu55/cpu_tb.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>Design Utilities</ClosedNode>
+         <ClosedNode>Design Utilities/Compile HDL Simulation Libraries</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem>Design Utilities</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000161000000010000000100000000000000000000000064ffffffff000000810000000000000001000001610000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000153000000010000000100000000000000000000000064ffffffff000000810000000000000001000001530000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem>Design Utilities</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VERILOG" guiview="Process" >
       <ClosedNodes>
@@ -123,7 +141,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000153000000010000000100000000000000000000000064ffffffff000000810000000000000001000001530000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>Simulate Behavioral Model</CurrentItem>
    </ItemView>

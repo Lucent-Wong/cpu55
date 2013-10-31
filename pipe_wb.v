@@ -19,6 +19,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module pipe_wb(
+		input [31:0] dmem_data,
+		input [31:0] alud,
+		input wdc,
+		output [31:0] wd
     );
 
+mux2x32 select_wd(alud, dmem_data, wdc, wd);
+//mux4x32 select_wd(alud, dmem_data, BEPU_FEPU_data, wdc, wd);
 endmodule

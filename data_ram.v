@@ -52,63 +52,68 @@ module data_ram #(parameter /*WIDTH = 32,*/ DEPTH = 3, INIT = 1)(
 	
 
 	`ifdef WRITE_FIRST
-		always @(posedge clk)
+		always @(/*posedge clk or negedge*/ clk)
 		if (ram_ena) begin
-			if((w && ~(addr[0] || addr[1])) || (h && ~addr[0]) || b) begin
-				if (wena) begin
-					case({w,h,b,z})
-					4'b0010: begin
-						ram[addr] <= data_in[7:0];
-						data_out <= {{24{1'b0}},ram[addr]};
+			if(clk ==1) begin
+				if((w && ~(addr[0] || addr[1])) || (h && ~addr[0]) || b) begin
+					if (wena) begin
+						case({w,h,b,z})
+						4'b0010: begin
+							ram[addr] <= data_in[7:0];
+							data_out <= {{24{1'b0}},ram[addr]};
+						end
+						4'b0100: begin
+							ram[addr] <= data_in[7:0];
+							ram[addr+1] <= data_in[15:8];
+							data_out <= {{16{1'b0}},ram[addr+1],ram[addr]};
+						end
+						4'b0011: begin
+							ram[addr] <= data_in[7:0];
+							data_out <= {{24{ram[addr][7]}},ram[addr]};
+						end
+						4'b0101: begin
+							ram[addr] <= data_in[7:0];
+							ram[addr+1] <= data_in[15:8];
+							data_out <= {{16{ram[addr+1][7]}},ram[addr+1],ram[addr]};
+						end
+						default: begin
+							ram[addr] <= data_in[7:0];
+							ram[addr+1] <= data_in[15:8];
+							ram[addr+2] <= data_in[23:16];
+							ram[addr+3] <= data_in[31:24];
+							data_out <= {ram[addr+3],ram[addr+2],ram[addr+1],ram[addr]};
+						end
+						endcase
+						//ram[addr] <= data_in;
+						//data_out <= ram[addr];
 					end
-					4'b0100: begin
-						ram[addr] <= data_in[7:0];
-						ram[addr+1] <= data_in[15:8];
-						data_out <= {{16{1'b0}},ram[addr+1],ram[addr]};
+					else
+						case({w,h,b,z})
+						4'b0010: begin					
+							data_out <= {{24{1'b0}},ram[addr]};
+						end
+						4'b0100: begin					
+							data_out <= {{16{1'b0}},ram[addr+1],ram[addr]};
+						end
+						4'b0011: begin					
+							data_out <= {{24{ram[addr][7]}},ram[addr]};
+						end
+						4'b0101: begin
+							data_out <= {{16{ram[addr+1][7]}},ram[addr+1],ram[addr]};
+						end
+						default: begin					
+							data_out <= {ram[addr+3],ram[addr+2],ram[addr+1],ram[addr]};
+						end
+						endcase
+						//data_out <= ram[addr];
 					end
-					4'b0011: begin
-						ram[addr] <= data_in[7:0];
-						data_out <= {{24{ram[addr][7]}},ram[addr]};
-					end
-					4'b0101: begin
-						ram[addr] <= data_in[7:0];
-						ram[addr+1] <= data_in[15:8];
-						data_out <= {{16{ram[addr+1][7]}},ram[addr+1],ram[addr]};
-					end
-					default: begin
-						ram[addr] <= data_in[7:0];
-						ram[addr+1] <= data_in[15:8];
-						ram[addr+2] <= data_in[23:16];
-						ram[addr+3] <= data_in[31:24];
-						data_out <= {ram[addr+3],ram[addr+2],ram[addr+1],ram[addr]};
-					end
-					endcase
-					//ram[addr] <= data_in;
-					//data_out <= ram[addr];
+				else begin
+					AddressError <= 1'b1;
 				end
-				else
-					case({w,h,b,z})
-					4'b0010: begin					
-						data_out <= {{24{1'b0}},ram[addr]};
-					end
-					4'b0100: begin					
-						data_out <= {{16{1'b0}},ram[addr+1],ram[addr]};
-					end
-					4'b0011: begin					
-						data_out <= {{24{ram[addr][7]}},ram[addr]};
-					end
-					4'b0101: begin
-						data_out <= {{16{ram[addr+1][7]}},ram[addr+1],ram[addr]};
-					end
-					default: begin					
-						data_out <= {ram[addr+3],ram[addr+2],ram[addr+1],ram[addr]};
-					end
-					endcase
-					//data_out <= ram[addr];
-				end
+			end
 			else begin
-				AddressError <= 1'b1;
-			end		
+				AddressError <= 1'b0;
+			end
 		end
 	/*`elsif READ_FIRST
 		always @(posedge clk)
@@ -131,8 +136,5 @@ module data_ram #(parameter /*WIDTH = 32,*/ DEPTH = 3, INIT = 1)(
             ram[addr] <= data_in;
 
 			assign data_out = ram[addr];*/
-	`endif
-	always @(negedge clk) begin
-		AddressError <= 1'b0;
-	end//ÏÂ½µÑØÀ­µÍERROR
+	`endif	
 endmodule

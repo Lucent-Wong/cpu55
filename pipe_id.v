@@ -28,7 +28,7 @@ module pipe_id(
 		input zero,
 		input overflow,
 		/******************add by wong***************************/
-		input negtive,
+		input negative,
 		/********************************************************/
 		output [31:0] rd1, //译码阶段，从寄存器组得到的源操作数a
 		output [31:0] rd2, //译码阶段，从寄存器组得到的源操作数b
@@ -49,7 +49,8 @@ module pipe_id(
 		
 		output w,
 		output h,
-		output b
+		output b,
+		output z
     );
 
 wire [4:0] ra1, ra2, rd;
@@ -68,7 +69,7 @@ assign rf_w = rf_wena && (~overflow);
 
 regfile rf(.clk(clk), .rst(rst),.wen(rf_w), .raddr1(ra1),.raddr2(ra2), 
 			 .waddr(wa), .wdata(wd), .rdata1(rd1),.rdata2(rd2));
-controlunit cu(.op(op),.func(func),.zero(zero),	.negtive(negtive),.rs(rs),.rt(rt),.rd(rd),
+controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(rt),.rd(rd),
 					.rt_sel(rt_sel),	
 					.w(w),
 					.h(h),
@@ -87,7 +88,7 @@ controlunit cu(.op(op),.func(func),.zero(zero),	.negtive(negtive),.rs(rs),.rt(rt
 					.aludc(aludc),
 					.pcsource(pcsource)
 					);
-mux2x32 rt_mux(.a(rt),.b(5'b00000),.s(rt_sel),.r(ra2));//decide if rt euqals $0
+mux2x32 rt_mux(.a(rt),.b(5'b00000),.select(rt_sel),.r(ra2));//decide if rt euqals $0
 //whb_selector();//put in front of wd 废弃此模块
 ext shamtext(shamt, sext_s, shamt32);
 ext #(16) immext(imm, sext_i, imm32);
