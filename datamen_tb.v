@@ -32,7 +32,7 @@ module datamen_tb;
 	reg h;
 	reg b;
 	reg z;
-	reg [2:0] addr;
+	reg [19:0] addr;
 	reg [31:0] data_in;
 
 	// Outputs
@@ -40,7 +40,7 @@ module datamen_tb;
 	wire AddressError;
 
 	// Instantiate the Unit Under Test (UUT)
-	data_ram #(3,0) uut (
+	data_ram #(10,2) uut (
 		.clk(clk), 
 		.ram_ena(ram_ena), 
 		.wena(wena), 
@@ -56,7 +56,7 @@ module datamen_tb;
 
 	initial begin
 		// Initialize Inputs
-		clk = 0;
+		clk = 1;
 		ram_ena = 0;
 		wena = 0;
 		w = 0;
@@ -68,6 +68,17 @@ module datamen_tb;
 
 		// Wait 100 ns for global reset to finish
 		//for write wena = 1
+		
+		#50;
+      ram_ena=1;
+		wena =1;
+		w=1;
+		h=0;
+		b=0;
+		z=0;
+		addr = 32'd1008;
+		data_in = 32'h00000001;
+		
 		#100;
       ram_ena=1;
 		wena =1;
@@ -75,10 +86,29 @@ module datamen_tb;
 		h=0;
 		b=0;
 		z=0;
-		addr = 0;
-		data_in = 32'hffff0000;
+		addr = 32'd980;
+		data_in = 32'h000000d4;
 		
 		#100;
+      ram_ena=1;
+		wena =0;
+		w=1;
+		h=0;
+		b=0;
+		z=0;
+		addr = 32'd1008;		
+		
+		#100;
+      ram_ena=1;
+		wena =0;
+		w=1;
+		h=0;
+		b=0;
+		z=0;
+		addr = 32'd980;
+		//data_in = 32'h00000001;
+		
+		/*#100;
 		w=0;
 		h=1;
 		addr = 4;
@@ -88,10 +118,10 @@ module datamen_tb;
 		h=0;
 		b=1;
 		addr = 7;
-		data_in = 32'hffff0000;
+		data_in = 32'hffff0000;*/
 		// Add stimulus here
 		//for write wena =0;
-		#100
+		/*#100
 		wena=1;
 		w=1;
 		h=0;
@@ -128,7 +158,7 @@ module datamen_tb;
 		#100
 		h=0;
 		b=1;
-		addr = 7;		
+		addr = 7;	*/	
 	end
    
 	always begin

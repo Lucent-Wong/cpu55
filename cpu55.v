@@ -29,7 +29,19 @@ module cpu55(
 		output [31:0] cpu_bc_data, //cpu_bc_data
 		output [31:0] cpu_bc_addr,
 		output cpu_bc_rw*/
-		output add_err//暂定传给cp0 2013 10 30
+		/*************add by wong*****************/
+		input [31:0] rdfcp0,//cp0 向cpu传递的数据，hi lo 或者cp0寄存器
+		output add_err,//暂定传给cp0 2013 10 30
+		output [31:0] rt2cp0,//rt传给cp0寄存器
+		output [4:0] reg_d,//读写cp0的目的寄存器
+		output [31:0] rs2hilo,//rs传给hilo寄存器
+		output c0_eret,
+		output mtc0,
+		output mfc0,
+		output mthi,
+		output mfhi,
+		output mtlo,
+		output mflo
     );
 	 
 //for test
@@ -144,6 +156,9 @@ assign dram_ena = 1'b1;
 //assign cpu_bc_addr = alud;
 //assign cpu_bc_rw = dram_wena; //读的时候需要改下！
 //assign dram_outdata = BEPU_FEPU_data;
+
+assign rt2cp0 = rd2;/*add by wong*/
+assign rs2hilo = rd1;/*add by wong*/
 
 file_write #(32, "instr")fw_instr(clk, instr);
 file_write #(32, "pc") fw_pc(clk, pc);
