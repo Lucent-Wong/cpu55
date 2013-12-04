@@ -13,20 +13,20 @@
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_exe - pipe_exe/alu - alu/sltsltu - slt</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_id - pipe_id/rf - regfile</ClosedNode>
+         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus4 - top_cla_32</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_if - pipe_if/pcplus8 - top_cla_32</ClosedNode>
          <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipe_wb - pipe_wb</ClosedNode>
-         <ClosedNode>/cpu55 D:|cpu55|cpu55.v/pipemem - pipe_mem</ClosedNode>
          <ClosedNode>/regfile D:|cpu55|regfile.v</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>cpu55 (D:/cpu55/cpu55.v)</SelectedItem>
+         <SelectedItem>pipemem - pipe_mem (D:/cpu55/pipe_mem.v)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >10</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001db000000020000000000000000000000000200000064ffffffff000000810000000300000002000001db0000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000168000000020000000000000000000000000200000064ffffffff000000810000000300000002000001680000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>cpu55 (D:/cpu55/cpu55.v)</CurrentItem>
+      <CurrentItem>pipemem - pipe_mem (D:/cpu55/pipe_mem.v)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -74,13 +74,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Configure Target Device</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >4</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000016e000000010000000100000000000000000000000064ffffffff0000008100000000000000010000016e0000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000000000000000000017f000000010000000100000000000000000000000064ffffffff0000008100000000000000010000017f0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Configure Target Device</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <SourceProcessView>000000ff000000000000000200000137000000e001000000050100000002</SourceProcessView>
    <CurrentView>Implementation</CurrentView>
