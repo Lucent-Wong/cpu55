@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "globaldefine.v"
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -30,11 +31,13 @@ module cpu55(
 		output [31:0] cpu_bc_addr,
 		output cpu_bc_rw*/
 		/*************add by wong*****************/
+		//data flow
 		input [31:0] rdfcp0,//cp0 向cpu传递的数据，hi lo 或者cp0寄存器
 		output add_err,//暂定传给cp0 2013 10 30
 		output [31:0] rt2cp0,//rt传给cp0寄存器
 		output [4:0] reg_d,//读写cp0的目的寄存器
 		output [31:0] rs2hilo,//rs传给hilo寄存器
+		//control flow
 		output c0_eret,
 		output mtc0,
 		output mfc0,
@@ -124,13 +127,17 @@ wire w_exe;
 wire h_exe;
 wire b_exe;
 wire z_exe;
-		
+
+//unfinished
+mux2x32 #(32) pc_mux(.a(npc),.b(epc),.select(1'b0),.r(_pc));
+
 dffe #(32) pcreg(.clk(clk), .rst(rst), .ena(pc_ena), .data_in(npc), .data_out(pc));
 pipe_if pipe_if(.clk(clk), .pc(pc), .ram_ena(iram_ena), .ram_wena(iram_wena), .ram_indata(iram_indata),
 					 .pc_jr(pc_jr), .pcsource(pcsource), .imm18(imm18), .index28(index28), .ram_outdata(instr), .npc(npc), .pc8(pc8));
 pipe_id pipe_id(.clk(clk), .rst(rst), .instr(instr), .wd(wrf_data), .rf_wena(rf_wena), .wa(wrf_addr), .zero(zero), .overflow(overflow),.negative(negative), 
 					 .rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .wa_d(wa_f), .imm18(imm18), .index28(index28), .aluc(aluc), .wrf(wrf), .shift(shift),
-					 .immc(immc), .pcsource(pcsource), .wdmem(wdmem), .wdc(wbdc), .aludc(aludc),.w(w),.h(h),.b(b),.z(z));
+					 .immc(immc), .pcsource(pcsource), .wdmem(wdmem), .wdc(wbdc), .aludc(aludc),.w(w),.h(h),.b(b),.z(z),.c0_eret(c0_eret),.mtc0(mtc0),.mfc0(mfc0),
+					.mthi(mthi),.mfhi(mfhi),.mtlo(mtlo),.mflo(mflo));
 pipe_exe pipe_exe(.w(w),.h(h),.b(b),.z(z),.rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .pc8(pc8), .immc(immc),
 						.shift(shift_e), .aludc(aludc), .aluc(aluc_e), .wa_f(wa_f), 
 						.wa_e(wa_e), .wd(alud), .zero(zero), .carry(carry), .negative(negative), .overflow(overflow),

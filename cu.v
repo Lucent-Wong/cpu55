@@ -33,6 +33,13 @@ module controlunit(
 		output h,
 		output b,
 		output z,
+		output c0_eret,
+		output mtc0,
+		output mfc0,
+		output mthi,
+		output mfhi,
+		output mtlo,
+		output mflo,
 		//
 		output [3:0] aluc,
 		output wrf,
@@ -164,4 +171,11 @@ assign w = i_lw || i_sw;
 assign h = i_lh || i_lhu || i_sh;
 assign b = i_lb || i_lbu || i_sb;
 assign z = i_lhu || i_lbu;
+assign c0_eret = i_eret;
+assign mtc0 = i_mtc0;
+assign mfc0 = i_mfc0;
+assign mthi = i_mthi;
+assign mfhi = i_mfhi;
+assign mtlo = i_mtlo;
+assign mflo = i_mflo;
 endmodule

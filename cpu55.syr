@@ -3,14 +3,14 @@ Copyright (c) 1995-2011 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.58 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.32 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.59 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.32 secs
  
 --> Reading design: cpu55.prj
 
@@ -46,7 +46,7 @@ Ignore Synthesis Constraint File   : NO
 ---- Target Parameters
 Output File Name                   : "cpu55"
 Output Format                      : NGC
-Target Device                      : xc6slx4-3-tqg144
+Target Device                      : xc6slx16-3-csg324
 
 ---- Source Options
 Top Module Name                    : cpu55
@@ -99,6 +99,9 @@ DSP48 Utilization Ratio            : 100
 Auto BRAM Packing                  : NO
 Slice Utilization Ratio Delta      : 5
 
+---- Other Options
+Cores Search Directories           : {"ipcore_dir"  }
+
 =========================================================================
 
 INFO:Xst - Part-select index evaluated to out of bound value may lead to incorrect synthesis results; it is recommended not to use them in RTL
@@ -148,10 +151,8 @@ Analyzing Verilog file "D:\cpu55\bshifter32_carry.v" into library work
 Parsing module <bshifter32_carry>.
 Analyzing Verilog file "D:\cpu55\regfile.v" into library work
 Parsing module <regfile>.
-Analyzing Verilog file "D:\cpu55\ram.v" into library work
-Parsing module <ram>.
-INFO:HDLCompiler:693 - "D:\cpu55\ram.v" Line 37. parameter declaration becomes local in ram with formal parameter declaration list
-INFO:HDLCompiler:693 - "D:\cpu55\ram.v" Line 38. parameter declaration becomes local in ram with formal parameter declaration list
+Analyzing Verilog file "D:\cpu55\ipcore_dir\iram_ip.v" into library work
+Parsing module <iram_ip>.
 Analyzing Verilog file "D:\cpu55\ext.v" into library work
 Parsing module <ext>.
 Analyzing Verilog file "D:\cpu55\data_ram.v" into library work
@@ -174,6 +175,7 @@ Parsing module <pipe_exe>.
 Analyzing Verilog file "D:\cpu55\dffe.v" into library work
 Parsing module <dffe>.
 Analyzing Verilog file "D:\cpu55\cpu55.v" into library work
+Parsing verilog file "globaldefine.v" included at line 2.
 Parsing module <cpu55>.
 
 =========================================================================
@@ -182,13 +184,16 @@ Parsing module <cpu55>.
 
 Elaborating module <cpu55>.
 
+Elaborating module <mux2x32(WIDTH=32)>.
+WARNING:HDLCompiler:189 - "D:\cpu55\cpu55.v" Line 132: Size mismatch in connection of port <b>. Formal port size is 32-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:1127 - "D:\cpu55\cpu55.v" Line 132: Assignment to _pc ignored, since the identifier is never used
+
 Elaborating module <dffe(WIDTH=32)>.
 
 Elaborating module <pipe_if>.
 
-Elaborating module <ram(WIDTH=32,DEPTH=10,INIT=1)>.
-Reading initialization file \"1out.txt\".
-WARNING:HDLCompiler:1670 - "D:\cpu55\ram.v" Line 47: Signal <ram> in initial block is partially initialized.
+Elaborating module <iram_ip>.
+WARNING:HDLCompiler:1499 - "D:\cpu55\ipcore_dir\iram_ip.v" Line 39: Empty module <iram_ip> remains a black box.
 
 Elaborating module <top_cla_32>.
 
@@ -205,8 +210,8 @@ Elaborating module <cla_2>.
 Elaborating module <add>.
 
 Elaborating module <g_p>.
-WARNING:HDLCompiler:1127 - "D:\cpu55\pipe_if.v" Line 45: Assignment to npc4_carry ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\pipe_if.v" Line 46: Assignment to npc8_carry ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\pipe_if.v" Line 53: Assignment to npc4_carry ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\pipe_if.v" Line 54: Assignment to npc8_carry ignored, since the identifier is never used
 
 Elaborating module <mux4x32>.
 
@@ -351,22 +356,15 @@ WARNING:HDLCompiler:817 - "D:\cpu55\file_write.v" Line 35: System task fdisplay 
 WARNING:HDLCompiler:1499 - "D:\cpu55\file_write.v" Line 21: Empty module <file_write(WIDTH=32,ARGUMENT="regfiles31")> remains a black box.
 
 Elaborating module <controlunit>.
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 102: Assignment to i_div ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 103: Assignment to i_divu ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 104: Assignment to i_mult ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 105: Assignment to i_multu ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 119: Assignment to i_break ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 120: Assignment to i_syscall ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 122: Assignment to i_eret ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 123: Assignment to i_mfhi ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 124: Assignment to i_mflo ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 125: Assignment to i_mthi ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 126: Assignment to i_mtlo ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 127: Assignment to i_mfc0 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 128: Assignment to i_mtc0 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 109: Assignment to i_div ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 110: Assignment to i_divu ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 111: Assignment to i_mult ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 112: Assignment to i_multu ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 126: Assignment to i_break ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cu.v" Line 127: Assignment to i_syscall ignored, since the identifier is never used
 
 Elaborating module <mux2x32>.
-WARNING:HDLCompiler:189 - "D:\cpu55\pipe_id.v" Line 91: Size mismatch in connection of port <a>. Formal port size is 32-bit while actual signal size is 5-bit.
+WARNING:HDLCompiler:189 - "D:\cpu55\pipe_id.v" Line 105: Size mismatch in connection of port <a>. Formal port size is 32-bit while actual signal size is 5-bit.
 
 Elaborating module <ext>.
 
@@ -395,7 +393,7 @@ Elaborating module <bshifter32_carry>.
 Elaborating module <barrelshifter32>.
 
 Elaborating module <mux4x32(WIDTH=1)>.
-WARNING:HDLCompiler:1127 - "D:\cpu55\cpu55.v" Line 136: Assignment to carry ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\cpu55\cpu55.v" Line 143: Assignment to carry ignored, since the identifier is never used
 
 Elaborating module <pipe_mem>.
 
@@ -418,7 +416,8 @@ WARNING:HDLCompiler:1499 - "D:\cpu55\file_write.v" Line 21: Empty module <file_w
 Elaborating module <file_write(WIDTH=32,ARGUMENT="pc")>.
 WARNING:HDLCompiler:817 - "D:\cpu55\file_write.v" Line 35: System task fdisplay ignored for synthesis
 WARNING:HDLCompiler:1499 - "D:\cpu55\file_write.v" Line 21: Empty module <file_write(WIDTH=32,ARGUMENT="pc")> remains a black box.
-WARNING:HDLCompiler:634 - "D:\cpu55\cpu55.v" Line 48: Net <iram_indata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "D:\cpu55\cpu55.v" Line 51: Net <iram_indata[31]> does not have a driver.
+WARNING:HDLCompiler:634 - "D:\cpu55\cpu55.v" Line 132: Net <epc> does not have a driver.
 WARNING:Xst:2972 - "d:/cpu55/regfile.v" line 146. All outputs of instance <fw_rf> of block <file_write_regfiles> are unconnected in block <regfile>. Underlying logic will be removed.
 WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 60. All outputs of instance <fw_rf0> of block <file_write> are unconnected in block <file_write_regfiles>. Underlying logic will be removed.
 WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 61. All outputs of instance <fw_rf1> of block <file_write> are unconnected in block <file_write_regfiles>. Underlying logic will be removed.
@@ -452,8 +451,9 @@ WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 88. All outputs of inst
 WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 89. All outputs of instance <fw_rf29> of block <file_write> are unconnected in block <file_write_regfiles>. Underlying logic will be removed.
 WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 90. All outputs of instance <fw_rf30> of block <file_write> are unconnected in block <file_write_regfiles>. Underlying logic will be removed.
 WARNING:Xst:2972 - "d:/cpu55/file_write_regfiles.v" line 91. All outputs of instance <fw_rf31> of block <file_write> are unconnected in block <file_write_regfiles>. Underlying logic will be removed.
-WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 163. All outputs of instance <fw_instr> of block <file_write> are unconnected in block <cpu55>. Underlying logic will be removed.
-WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 164. All outputs of instance <fw_pc> of block <file_write> are unconnected in block <cpu55>. Underlying logic will be removed.
+WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 132. All outputs of instance <pc_mux> of block <mux2x32> are unconnected in block <cpu55>. Underlying logic will be removed.
+WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 170. All outputs of instance <fw_instr> of block <file_write> are unconnected in block <cpu55>. Underlying logic will be removed.
+WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 171. All outputs of instance <fw_pc> of block <file_write> are unconnected in block <cpu55>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -462,8 +462,10 @@ WARNING:Xst:2972 - "d:/cpu55/cpu55.v" line 164. All outputs of instance <fw_pc> 
 Synthesizing Unit <cpu55>.
     Related source file is "d:/cpu55/cpu55.v".
 WARNING:Xst:647 - Input <rdfcp0<31:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "d:/cpu55/cpu55.v" line 134: Output port <carry> of the instance <pipe_exe> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "d:/cpu55/cpu55.v" line 132: Output port <r> of the instance <pc_mux> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "d:/cpu55/cpu55.v" line 141: Output port <carry> of the instance <pipe_exe> is unconnected or connected to loadless signal.
 WARNING:Xst:653 - Signal <iram_indata> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <epc> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Summary:
 	no macro.
 Unit <cpu55> synthesized.
@@ -478,22 +480,14 @@ Unit <dffe> synthesized.
 
 Synthesizing Unit <pipe_if>.
     Related source file is "d:/cpu55/pipe_if.v".
-INFO:Xst:3210 - "d:/cpu55/pipe_if.v" line 45: Output port <c_out> of the instance <pcplus4> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "d:/cpu55/pipe_if.v" line 46: Output port <c_out> of the instance <pcplus8> is unconnected or connected to loadless signal.
-    Found 32-bit adder for signal <pc_beqbne> created at line 49.
+WARNING:Xst:647 - Input <ram_indata<31:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <ram_wena> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "d:/cpu55/pipe_if.v" line 53: Output port <c_out> of the instance <pcplus4> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "d:/cpu55/pipe_if.v" line 54: Output port <c_out> of the instance <pcplus8> is unconnected or connected to loadless signal.
+    Found 32-bit adder for signal <pc_beqbne> created at line 57.
     Summary:
 	inferred   1 Adder/Subtractor(s).
 Unit <pipe_if> synthesized.
-
-Synthesizing Unit <ram>.
-    Related source file is "d:/cpu55/ram.v".
-        WIDTH = 32
-        DEPTH = 10
-        INIT = 1
-    Found 1024x32-bit single-port RAM <Mram_ram> for signal <ram>.
-    Summary:
-	inferred   1 RAM(s).
-Unit <ram> synthesized.
 
 Synthesizing Unit <top_cla_32>.
     Related source file is "d:/cpu55/top_cla_32.v".
@@ -586,7 +580,6 @@ Unit <mux32x32> synthesized.
 
 Synthesizing Unit <controlunit>.
     Related source file is "d:/cpu55/cu.v".
-WARNING:Xst:647 - Input <rs<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <rd<4:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Summary:
 	no macro.
@@ -613,12 +606,12 @@ Synthesizing Unit <ext_1>.
 	inferred   1 Multiplexer(s).
 Unit <ext_1> synthesized.
 
-Synthesizing Unit <mux2x32_1>.
+Synthesizing Unit <mux2x32_2>.
     Related source file is "d:/cpu55/mux2x32.v".
         WIDTH = 5
     Summary:
 	inferred   1 Multiplexer(s).
-Unit <mux2x32_1> synthesized.
+Unit <mux2x32_2> synthesized.
 
 Synthesizing Unit <pipe_exe>.
     Related source file is "d:/cpu55/pipe_exe.v".
@@ -655,7 +648,7 @@ Unit <slt> synthesized.
 
 Synthesizing Unit <bshifter32_carry>.
     Related source file is "d:/cpu55/bshifter32_carry.v".
-    Found 5-bit subtractor for signal <b[4]_GND_62_o_sub_1_OUT> created at line 37.
+    Found 5-bit subtractor for signal <b[4]_GND_63_o_sub_1_OUT> created at line 37.
     Found 32-bit 3-to-1 multiplexer for signal <c_r> created at line 40.
     Summary:
 	inferred   1 Adder/Subtractor(s).
@@ -692,12 +685,12 @@ Synthesizing Unit <mux4x32_2>.
 	inferred   1 Multiplexer(s).
 Unit <mux4x32_2> synthesized.
 
-Synthesizing Unit <mux2x32_2>.
+Synthesizing Unit <mux2x32_3>.
     Related source file is "d:/cpu55/mux2x32.v".
         WIDTH = 16
     Summary:
 	inferred   1 Multiplexer(s).
-Unit <mux2x32_2> synthesized.
+Unit <mux2x32_3> synthesized.
 
 Synthesizing Unit <ext_2>.
     Related source file is "d:/cpu55/ext.v".
@@ -737,8 +730,7 @@ Unit <pipe_wb> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 2
- 1024x32-bit single-port RAM                           : 1
+# RAMs                                                 : 1
  256x32-bit single-port RAM                            : 1
 # Adders/Subtractors                                   : 2
  32-bit adder                                          : 1
@@ -767,6 +759,8 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Reading core <ipcore_dir/iram_ip.ngc>.
+Loading core <iram_ip> for timing and area information for instance <your_instance_name>.
 WARNING:Xst:1290 - Hierarchical block <select_carry> is unconnected in block <alu>.
    It will be removed from the design.
 WARNING:Xst:1710 - FF/Latch <data_out_31> (without init value) has a constant value of 0 in block <reg0>. This FF/Latch will be trimmed during the optimization process.
@@ -817,27 +811,11 @@ INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_ram> will be implemented on LUTs eit
     -----------------------------------------------------------------------
 Unit <data_ram> synthesized (advanced).
 
-Synthesizing (advanced) Unit <ram>.
-INFO:Xst:3218 - HDL ADVISOR - The RAM <Mram_ram> will be implemented on LUTs either because you have described an asynchronous read or because of currently unsupported block RAM features. If you have described an asynchronous read, making it synchronous would allow you to take advantage of available block RAM resources, for optimized device usage and improved timings. Please refer to your documentation for coding guidelines.
-    -----------------------------------------------------------------------
-    | ram_type           | Distributed                         |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 1024-word x 32-bit                  |          |
-    |     clkA           | connected to signal <clk>           | rise     |
-    |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <addr>          |          |
-    |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to internal node          |          |
-    -----------------------------------------------------------------------
-Unit <ram> synthesized (advanced).
-
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 2
- 1024x32-bit single-port distributed RAM               : 1
+# RAMs                                                 : 1
  256x32-bit single-port distributed RAM                : 1
 # Adders/Subtractors                                   : 2
  32-bit adder                                          : 1
@@ -915,112 +893,10 @@ Optimizing unit <addsub32> ...
 Optimizing unit <bshifter32_carry> ...
 
 Optimizing unit <barrelshifter32> ...
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram3> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram4> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram6> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram7> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram8> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram11> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram10> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram12> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram16> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram14> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram15> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram18> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram19> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram20> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram22> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram23> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram24> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram26> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram27> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram30> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram28> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram31> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram32> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram35> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram34> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram36> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram40> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram38> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram39> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram42> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram43> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram44> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram46> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram47> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram48> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram50> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram51> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram54> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram52> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram55> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram56> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram59> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram58> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram60> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram62> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram63> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram64> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram68> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram66> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram67> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram70> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram71> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram72> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram74> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram75> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram78> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram76> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram79> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram80> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram82> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram83> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram84> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram87> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram86> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram88> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram92> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram90> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram91> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram94> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram95> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram96> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram98> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram99> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram100> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram102> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram103> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram106> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram104> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram107> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram108> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram111> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram110> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram112> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram116> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram114> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram115> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram118> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram119> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram120> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram121> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram122> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram123> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram124> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram126> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram127> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram2>, <pipe_if/iram/Mram_ram128> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram25>, <pipe_if/iram/Mram_ram29> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram25>, <pipe_if/iram/Mram_ram33> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram25>, <pipe_if/iram/Mram_ram37> are equivalent, second RAM is removed
-INFO:Xst:2399 - RAMs <pipe_if/iram/Mram_ram93>, <pipe_if/iram/Mram_ram97> are equivalent, second RAM is removed
-((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N214 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N222 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N8 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N254 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N230 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N238 * !pc<11>) + (N8 * pc<11>))))((((N8 * pc<11>) + (N8 * !pc<11>)) * pc<10>) + (!pc<10> * ((N8 * pc<11>) + (N6 * !pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N30 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N22 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N14 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N46 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N38 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N86 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N126 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N166 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N158 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N150 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N142 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N110 * !pc<11>) + (N8 * pc<11>))))((((N8 * pc<11>) + (N8 * !pc<11>)) * pc<10>) + (!pc<10> * ((N94 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N54 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N54 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N54 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N54 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N102 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N118 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N134 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N174 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N182 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N190 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N190 * !pc<11>) + (N8 * pc<11>))))((((N8 * !pc<11>) + (N8 * pc<11>)) * pc<10>) + (!pc<10> * ((N206 * !pc<11>) + (N8 * pc<11>))))
+
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block cpu55, actual ratio is 98.
-FlipFlop pcreg/data_out_10 has been replicated 1 time(s)
-FlipFlop pcreg/data_out_11 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block cpu55, actual ratio is 25.
 
 Final Macro Processing ...
 
@@ -1028,8 +904,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1026
- Flip-Flops                                            : 1026
+# Registers                                            : 1024
+ Flip-Flops                                            : 1024
 
 =========================================================================
 
@@ -1052,53 +928,58 @@ Top Level Output File Name         : cpu55.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 1515
-#      GND                         : 1
+# BELS                             : 3271
+#      GND                         : 2
 #      LUT1                        : 14
-#      LUT2                        : 11
-#      LUT3                        : 12
-#      LUT4                        : 120
-#      LUT5                        : 287
-#      LUT6                        : 957
+#      LUT2                        : 48
+#      LUT3                        : 1015
+#      LUT4                        : 122
+#      LUT5                        : 422
+#      LUT6                        : 1439
 #      MUXCY                       : 29
-#      MUXF7                       : 54
+#      MUXF7                       : 149
+#      VCC                         : 1
 #      XORCY                       : 30
-# FlipFlops/Latches                : 1026
-#      FDC                         : 34
+# FlipFlops/Latches                : 1025
+#      FDC                         : 32
 #      FDCE_1                      : 992
-# RAMS                             : 60
-#      RAM256X1S                   : 60
+#      FDE                         : 1
+# RAMS                             : 34
+#      RAM256X1S                   : 32
+#      RAMB16BWER                  : 2
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 66
+# IO Buffers                       : 73
 #      IBUF                        : 1
-#      OBUF                        : 65
+#      OBUF                        : 72
 
 Device utilization summary:
 ---------------------------
 
-Selected Device : 6slx4tqg144-3 
+Selected Device : 6slx16csg324-3 
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:            1026  out of   4800    21%  
- Number of Slice LUTs:                 1641  out of   2400    68%  
-    Number used as Logic:              1401  out of   2400    58%  
-    Number used as Memory:              240  out of   1200    20%  
-       Number used as RAM:              240
+ Number of Slice Registers:            1025  out of  18224     5%  
+ Number of Slice LUTs:                 3188  out of   9112    34%  
+    Number used as Logic:              3060  out of   9112    33%  
+    Number used as Memory:              128  out of   2176     5%  
+       Number used as RAM:              128
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   2459
-   Number with an unused Flip Flop:    1433  out of   2459    58%  
-   Number with an unused LUT:           818  out of   2459    33%  
-   Number of fully used LUT-FF pairs:   208  out of   2459     8%  
-   Number of unique control sets:        32
+ Number of LUT Flip Flop pairs used:   3335
+   Number with an unused Flip Flop:    2310  out of   3335    69%  
+   Number with an unused LUT:           147  out of   3335     4%  
+   Number of fully used LUT-FF pairs:   878  out of   3335    26%  
+   Number of unique control sets:        35
 
 IO Utilization: 
  Number of IOs:                         111
- Number of bonded IOBs:                  67  out of    102    65%  
+ Number of bonded IOBs:                  74  out of    232    31%  
 
 Specific Feature Utilization:
+ Number of Block RAM/FIFO:                2  out of     32     6%  
+    Number using Block RAM only:          2
  Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
 
 ---------------------------
@@ -1119,11 +1000,13 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 1086  |
------------------------------------+------------------------+-------+
+-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)                                                                                                                               | Load  |
+-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+clk                                | BUFGP                                                                                                                                               | 1059  |
+pipe_if/your_instance_name/N1      | NONE(pipe_if/your_instance_name/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 2     |
+-----------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
 ----------------------------------------
@@ -1133,9 +1016,9 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 51.639ns (Maximum Frequency: 19.365MHz)
-   Minimum input arrival time before clock: 3.865ns
-   Maximum output required time after clock: 27.680ns
+   Minimum period: 36.271ns (Maximum Frequency: 27.570MHz)
+   Minimum input arrival time before clock: 3.864ns
+   Maximum output required time after clock: 19.382ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -1144,55 +1027,48 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 51.639ns (frequency: 19.365MHz)
-  Total number of paths / destination ports: 665141961 / 2562
+  Clock period: 36.271ns (frequency: 27.570MHz)
+  Total number of paths / destination ports: 1725636920 / 2357
 -------------------------------------------------------------------------
-Delay:               25.819ns (Levels of Logic = 25)
-  Source:            pcreg/data_out_11 (FF)
-  Destination:       pipe_id/rf/reg1/data_out_30 (FF)
+Delay:               18.135ns (Levels of Logic = 18)
+  Source:            pipe_if/your_instance_name/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (RAM)
+  Destination:       pipe_id/rf/reg16/data_out_18 (FF)
   Source Clock:      clk rising
   Destination Clock: clk falling
 
-  Data Path: pcreg/data_out_11 to pipe_id/rf/reg1/data_out_30
+  Data Path: pipe_if/your_instance_name/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram to pipe_id/rf/reg16/data_out_18
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q            101   0.447   1.984  pcreg/data_out_11 (pcreg/data_out_11)
-     LUT4:I2->O           22   0.203   1.362  inst_LPM_MUX3111 (instr<31>)
-     LUT6:I3->O            6   0.205   0.745  pipe_id/cu/rt_sel1_1 (pipe_id/cu/rt_sel1)
-     LUT5:I4->O           20   0.205   1.197  pipe_id/rt_mux/Mmux_r21_2 (pipe_id/rt_mux/Mmux_r211)
-     LUT6:I4->O            1   0.203   0.827  pipe_id/rf/raddr2_select/Mmux_data_out_1027 (pipe_id/rf/raddr2_select/Mmux_data_out_1027)
-     LUT6:I2->O            1   0.203   0.000  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_26_G (N443)
-     MUXF7:I1->O           4   0.140   0.684  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_26 (rt2cp0_5_OBUF)
-     LUT6:I5->O           17   0.205   1.132  pipe_exe/select_alub/Mmux_r281 (pipe_exe/alub<5>)
-     LUT5:I3->O            2   0.203   0.617  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out3 (pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out2)
-     LUT5:I4->O            1   0.205   0.808  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out6_SW0 (N331)
-     LUT6:I3->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out6 (pipe_exe/alu/addsub/addu/cla0/cla0/c_out)
-     LUT5:I4->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/cla1/cla0/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla0/cla1/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/cla1/g_p0/c_out (pipe_exe/alu/addsub/addu/cla0/cla0/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out11 (pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1)
-     LUT6:I5->O            4   0.205   0.684  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/cla1/c_out)
-     LUT6:I5->O            4   0.205   0.684  pipe_exe/alu/addsub/addu/cla0/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla1/g_p0/c_out4 (pipe_exe/alu/addsub/addu/cla0/cla1/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla1/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/cla1/cla1/c_out)
-     LUT6:I5->O           10   0.205   0.857  pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o1 (pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o1)
-     LUT4:I3->O            1   0.205   0.580  pipe_exe/alu/addsub/Mmux_c1111_1 (pipe_exe/alu/addsub/Mmux_c1111)
-     LUT6:I5->O           12   0.205   0.909  pipe_exe/alu/select_alu/Mmux_r314 (pipe_exe/alud<0>)
-     LUT5:I4->O           14   0.205   0.958  pipe_exe/select_alud/Mmux_r11 (alud<0>)
-     LUT6:I5->O           15   0.205   0.982  pipemem/ram_out/Mmux_r1033 (pipemem/ram_out/Mmux_r103)
-     LUT4:I3->O           16   0.205   0.000  pipe_wb/select_wd/Mmux_r243 (wbd<30>)
-     FDCE_1:D                  0.102          pipe_id/rf/reg31/data_out_30
+     RAMB16BWER:CLKA->DOA17    1   1.850   0.684  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.ram_douta<17>)
+     LUT3:I1->O          147   0.203   2.001  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/Mmux_dout_mux91 (douta<17>)
+     end scope: 'pipe_if/your_instance_name:douta<17>'
+     LUT3:I2->O            4   0.205   0.684  pipe_id/cu/op[5]_rt[1]_AND_284_o<0>_SW1 (N1102)
+     LUT6:I5->O           14   0.205   0.958  pipe_id/cu/rt_sel1_3 (pipe_id/cu/rt_sel12)
+     LUT6:I5->O            1   0.205   0.827  pipe_id/rf/raddr2_select/Mmux_data_out_104 (pipe_id/rf/raddr2_select/Mmux_data_out_104)
+     LUT6:I2->O            1   0.203   0.000  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_3_G (N1684)
+     MUXF7:I1->O           8   0.140   0.803  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_3 (rt2cp0_13_OBUF)
+     LUT4:I3->O            4   0.205   0.912  pipe_exe/alu/addsub/Mmux_b251 (pipe_exe/alu/addsub/b2<13>)
+     LUT6:I3->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out11_SW0 (N284)
+     LUT5:I4->O            6   0.205   0.849  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1_SW0 (N548)
+     LUT6:I4->O            4   0.203   0.788  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4_SW4 (N1313)
+     LUT6:I4->O            7   0.203   0.774  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4_2 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out41)
+     LUT6:I5->O            5   0.205   0.715  pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o1_1 (pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o11)
+     LUT3:I2->O            1   0.205   0.580  pipe_wb/select_wd/Mmux_r102_F_SW0 (N1833)
+     LUT6:I5->O            1   0.205   0.000  pipe_wb/select_wd/Mmux_r102_F (N1727)
+     MUXF7:I0->O           2   0.131   0.617  pipe_wb/select_wd/Mmux_r102 (pipe_wb/select_wd/Mmux_r101)
+     LUT6:I5->O           16   0.205   1.005  pipe_wb/select_wd/Mmux_r103 (wbd<18>)
+     LUT3:I2->O            1   0.205   0.000  pipe_id/rf/reg29/data_out_18_dpot (pipe_id/rf/reg29/data_out_18_dpot)
+     FDCE_1:D                  0.102          pipe_id/rf/reg29/data_out_18
     ----------------------------------------
-    Total                     25.819ns (5.601ns logic, 20.218ns route)
-                                       (21.7% logic, 78.3% route)
+    Total                     18.135ns (5.290ns logic, 12.845ns route)
+                                       (29.2% logic, 70.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 1026 / 1026
+  Total number of paths / destination ports: 1024 / 1024
 -------------------------------------------------------------------------
-Offset:              3.865ns (Levels of Logic = 1)
+Offset:              3.864ns (Levels of Logic = 1)
   Source:            rst (PAD)
   Destination:       pcreg/data_out_31 (FF)
   Destination Clock: clk rising
@@ -1201,54 +1077,45 @@ Offset:              3.865ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O          1026   1.222   2.213  rst_IBUF (rst_IBUF)
+     IBUF:I->O          1024   1.222   2.212  rst_IBUF (rst_IBUF)
      FDC:CLR                   0.430          pcreg/data_out_0
     ----------------------------------------
-    Total                      3.865ns (1.652ns logic, 2.213ns route)
+    Total                      3.864ns (1.652ns logic, 2.212ns route)
                                        (42.7% logic, 57.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 144765 / 65
+  Total number of paths / destination ports: 607031 / 72
 -------------------------------------------------------------------------
-Offset:              27.680ns (Levels of Logic = 25)
-  Source:            pcreg/data_out_11 (FF)
+Offset:              19.382ns (Levels of Logic = 16)
+  Source:            pipe_if/your_instance_name/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (RAM)
   Destination:       add_err (PAD)
   Source Clock:      clk rising
 
-  Data Path: pcreg/data_out_11 to add_err
+  Data Path: pipe_if/your_instance_name/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram to add_err
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q            101   0.447   1.984  pcreg/data_out_11 (pcreg/data_out_11)
-     LUT4:I2->O           22   0.203   1.362  inst_LPM_MUX3111 (instr<31>)
-     LUT6:I3->O            6   0.205   0.745  pipe_id/cu/rt_sel1_1 (pipe_id/cu/rt_sel1)
-     LUT5:I4->O           20   0.205   1.197  pipe_id/rt_mux/Mmux_r21_2 (pipe_id/rt_mux/Mmux_r211)
-     LUT6:I4->O            1   0.203   0.827  pipe_id/rf/raddr2_select/Mmux_data_out_1027 (pipe_id/rf/raddr2_select/Mmux_data_out_1027)
-     LUT6:I2->O            1   0.203   0.000  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_26_G (N443)
-     MUXF7:I1->O           4   0.140   0.684  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_26 (rt2cp0_5_OBUF)
-     LUT6:I5->O           17   0.205   1.132  pipe_exe/select_alub/Mmux_r281 (pipe_exe/alub<5>)
-     LUT5:I3->O            2   0.203   0.617  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out3 (pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out2)
-     LUT5:I4->O            1   0.205   0.808  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out6_SW0 (N331)
-     LUT6:I3->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/g_p0/c_out6 (pipe_exe/alu/addsub/addu/cla0/cla0/c_out)
-     LUT5:I4->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/cla1/cla0/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla0/cla1/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla0/cla1/g_p0/c_out (pipe_exe/alu/addsub/addu/cla0/cla0/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out11 (pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1)
-     LUT6:I5->O            4   0.205   0.684  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/cla1/c_out)
-     LUT6:I5->O            4   0.205   0.684  pipe_exe/alu/addsub/addu/cla0/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla1/g_p0/c_out4 (pipe_exe/alu/addsub/addu/cla0/cla1/cla1/c_out)
-     LUT6:I5->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/cla1/cla1/cla1/g_p0/c_out1 (pipe_exe/alu/addsub/addu/cla0/cla1/cla1/cla1/c_out)
-     LUT6:I5->O           10   0.205   0.857  pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o1 (pipe_exe/alu/addsub/add_result_addu_result[31]_equal_4_o1)
-     LUT4:I3->O            1   0.205   0.580  pipe_exe/alu/addsub/Mmux_c1111_1 (pipe_exe/alu/addsub/Mmux_c1111)
-     LUT6:I5->O           12   0.205   0.909  pipe_exe/alu/select_alu/Mmux_r314 (pipe_exe/alud<0>)
-     LUT5:I4->O           14   0.205   0.958  pipe_exe/select_alud/Mmux_r11 (alud<0>)
-     LUT5:I4->O            1   0.205   0.579  pipemem/AddressErr1 (add_err_OBUF)
+     RAMB16BWER:CLKA->DOA17    1   1.850   0.684  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.ram_douta<17>)
+     LUT3:I1->O          147   0.203   2.001  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/Mmux_dout_mux91 (douta<17>)
+     end scope: 'pipe_if/your_instance_name:douta<17>'
+     LUT3:I2->O            4   0.205   0.684  pipe_id/cu/op[5]_rt[1]_AND_284_o<0>_SW1 (N1102)
+     LUT6:I5->O           14   0.205   0.958  pipe_id/cu/rt_sel1_3 (pipe_id/cu/rt_sel12)
+     LUT6:I5->O            1   0.205   0.827  pipe_id/rf/raddr2_select/Mmux_data_out_104 (pipe_id/rf/raddr2_select/Mmux_data_out_104)
+     LUT6:I2->O            1   0.203   0.000  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_3_G (N1684)
+     MUXF7:I1->O           8   0.140   0.803  pipe_id/rf/raddr2_select/Mmux_data_out_2_f7_3 (rt2cp0_13_OBUF)
+     LUT4:I3->O            4   0.205   0.912  pipe_exe/alu/addsub/Mmux_b251 (pipe_exe/alu/addsub/b2<13>)
+     LUT6:I3->O            3   0.205   0.651  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out11_SW0 (N284)
+     LUT5:I4->O            6   0.205   0.849  pipe_exe/alu/addsub/addu/cla0/g_p0/c_out1_SW0 (N548)
+     LUT6:I4->O            4   0.203   0.788  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4_SW4 (N1313)
+     LUT6:I4->O            7   0.203   0.774  pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4_1 (pipe_exe/alu/addsub/addu/cla0/cla1/cla0/g_p0/c_out4)
+     LUT6:I5->O            6   0.205   0.745  pipe_exe/alu/select_alu/Mmux_r258_1 (pipe_exe/alu/select_alu/Mmux_r258)
+     LUT3:I2->O            4   0.205   0.912  pipe_exe/select_alud/Mmux_r121 (alud<1>)
+     LUT5:I2->O            1   0.205   0.579  pipemem/AddressErr1 (add_err_OBUF)
      OBUF:I->O                 2.571          add_err_OBUF (add_err)
     ----------------------------------------
-    Total                     27.680ns (7.865ns logic, 19.815ns route)
-                                       (28.4% logic, 71.6% route)
+    Total                     19.382ns (7.218ns logic, 12.164ns route)
+                                       (37.2% logic, 62.8% route)
 
 =========================================================================
 
@@ -1260,20 +1127,20 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk            |   28.397|   24.099|   25.819|         |
+clk            |   20.016|   16.144|   18.135|         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 34.00 secs
-Total CPU time to Xst completion: 34.05 secs
+Total REAL time to Xst completion: 74.00 secs
+Total CPU time to Xst completion: 73.55 secs
  
 --> 
 
-Total memory usage is 231296 kilobytes
+Total memory usage is 237888 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  202 (   0 filtered)
-Number of infos    :  108 (   0 filtered)
+Number of warnings :  201 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
 

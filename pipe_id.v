@@ -50,7 +50,14 @@ module pipe_id(
 		output w,
 		output h,
 		output b,
-		output z
+		output z,
+		output c0_eret,
+		output mtc0,
+		output mfc0,
+		output mthi,
+		output mfhi,
+		output mtlo,
+		output mflo
     );
 
 wire [4:0] ra1, ra2, rd;
@@ -86,7 +93,14 @@ controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(
 					.wena(wdmem), 
 					.wdc(wdc),
 					.aludc(aludc),
-					.pcsource(pcsource)
+					.pcsource(pcsource),
+					.c0_eret(c0_eret),
+					.mtc0(mtc0),
+					.mfc0(mfc0),
+					.mthi(mthi),
+					.mfhi(mfhi),
+					.mtlo(mtlo),
+					.mflo(mflo)
 					);
 mux2x32 rt_mux(.a(rt),.b(5'b00000),.select(rt_sel),.r(ra2));//decide if rt euqals $0
 //whb_selector();//put in front of wd ·ÏÆú´ËÄ£¿é
