@@ -29,6 +29,7 @@ module pipe_id(
 		input overflow,
 		/******************add by wong***************************/
 		input negative,
+		input [31:0]rdfcp0,
 		/********************************************************/
 		output [31:0] rd1, //译码阶段，从寄存器组得到的源操作数a
 		output [31:0] rd2, //译码阶段，从寄存器组得到的源操作数b
@@ -54,10 +55,12 @@ module pipe_id(
 		output c0_eret,
 		output mtc0,
 		output mfc0,
-		output mthi,
-		output mfhi,
+		output mthi,		
 		output mtlo,
-		output mflo
+		output mfhi,		
+		output mflo,
+		output [1:0] selpc//select npc or epc or base
+		
     );
 
 wire [4:0] ra1, ra2, rd;
@@ -68,14 +71,19 @@ wire [25:0] index;
 wire sext_s, regwa, sext_i;
 wire rf_w;
 
+wire rf_mfhi;
+output rf_mflo;
 //////add by wong////////
 wire rt_sel;
+wire rf_wd;
+wire rf_mfc0;
+mux2x32 wdsel (.a(wd),.b(rdfcp0),.select(rf_mfc0 | rf_mfhi | rf_mflo),.r(rf_wd));
 /////////////////////////
 
 assign rf_w = rf_wena && (~overflow);
 
 regfile rf(.clk(clk), .rst(rst),.wen(rf_w), .raddr1(ra1),.raddr2(ra2), 
-			 .waddr(wa), .wdata(wd), .rdata1(rd1),.rdata2(rd2));
+			 .waddr(wa), .wdata(rf_wd), .rdata1(rd1),.rdata2(rd2));
 controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(rt),.rd(rd),
 					.rt_sel(rt_sel),	
 					.w(w),
@@ -96,14 +104,14 @@ controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(
 					.pcsource(pcsource),
 					.c0_eret(c0_eret),
 					.mtc0(mtc0),
-					.mfc0(mfc0),
-					.mthi(mthi),
-					.mfhi(mfhi),
+					.mfc0(rf_mfc0),
+					.mthi(rf_mthi),
+					.mfhi(rf_mfhi),
 					.mtlo(mtlo),
-					.mflo(mflo)
+					.mflo(mflo),
+					.selpc(selpc)//select npc or epc or base
 					);
 mux2x32 rt_mux(.a(rt),.b(5'b00000),.select(rt_sel),.r(ra2));//decide if rt euqals $0
-//whb_selector();//put in front of wd 废弃此模块
 ext shamtext(shamt, sext_s, shamt32);
 ext #(16) immext(imm, sext_i, imm32);
 
@@ -115,6 +123,10 @@ assign imm = instr[15:0];
 assign op = instr[31:26];
 assign func = instr[5:0];
 assign index = instr[25:0];
+
+assign mfc0 = rf_mfc0;
+assign mfhi = rf_mfhi;
+assign mflo = rf_mflo;
 
 mux2x32 #(5) select_wa(rd, rt, regwa, wa_d);
 

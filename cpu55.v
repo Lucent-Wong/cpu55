@@ -33,10 +33,12 @@ module cpu55(
 		/*************add by wong*****************/
 		//data flow
 		input [31:0] rdfcp0,//cp0 向cpu传递的数据，hi lo 或者cp0寄存器
+		input [31:0] epc,//epc from cp0 to pc
 		output add_err,//暂定传给cp0 2013 10 30
 		output [31:0] rt2cp0,//rt传给cp0寄存器
 		output [4:0] reg_d,//读写cp0的目的寄存器
 		output [31:0] rs2hilo,//rs传给hilo寄存器
+		output [31:0] npc2c0,//npc to epc
 		//control flow
 		output c0_eret,
 		output mtc0,
@@ -129,7 +131,9 @@ wire b_exe;
 wire z_exe;
 
 //unfinished
-mux2x32 #(32) pc_mux(.a(npc),.b(epc),.select(1'b0),.r(_pc));
+wire [1:0]selpc;
+reg [31:0] base =32'h0000ffff;// the address of exc
+mux4x32 #(32) pc_mux(.a(npc),.b(epc),.c(base),.d(32'bz),.select(selpc),.r(_pc));
 
 dffe #(32) pcreg(.clk(clk), .rst(rst), .ena(pc_ena), .data_in(npc), .data_out(pc));
 pipe_if pipe_if(.clk(clk), .pc(pc), .ram_ena(iram_ena), .ram_wena(iram_wena), .ram_indata(iram_indata),
@@ -137,7 +141,8 @@ pipe_if pipe_if(.clk(clk), .pc(pc), .ram_ena(iram_ena), .ram_wena(iram_wena), .r
 pipe_id pipe_id(.clk(clk), .rst(rst), .instr(instr), .wd(wrf_data), .rf_wena(rf_wena), .wa(wrf_addr), .zero(zero), .overflow(overflow),.negative(negative), 
 					 .rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .wa_d(wa_f), .imm18(imm18), .index28(index28), .aluc(aluc), .wrf(wrf), .shift(shift),
 					 .immc(immc), .pcsource(pcsource), .wdmem(wdmem), .wdc(wbdc), .aludc(aludc),.w(w),.h(h),.b(b),.z(z),.c0_eret(c0_eret),.mtc0(mtc0),.mfc0(mfc0),
-					.mthi(mthi),.mfhi(mfhi),.mtlo(mtlo),.mflo(mflo));
+					.mthi(mthi),.mfhi(mfhi),.mtlo(mtlo),.mflo(mflo), .selpc(selpc),
+					.rdfcp0(rdfcp0));
 pipe_exe pipe_exe(.w(w),.h(h),.b(b),.z(z),.rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .pc8(pc8), .immc(immc),
 						.shift(shift_e), .aludc(aludc), .aluc(aluc_e), .wa_f(wa_f), 
 						.wa_e(wa_e), .wd(alud), .zero(zero), .carry(carry), .negative(negative), .overflow(overflow),
@@ -166,7 +171,8 @@ assign dram_ena = 1'b1;
 
 assign rt2cp0 = rd2;/*add by wong*/
 assign rs2hilo = rd1;/*add by wong*/
-
+assign reg_d = wa_f;
+assign npc2c0 = npc;
 file_write #(32, "instr")fw_instr(clk, instr);
 file_write #(32, "pc") fw_pc(clk, pc);
 

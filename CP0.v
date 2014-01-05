@@ -19,10 +19,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module CP0(
-    input  clock,
+    input  clk,
+	 input rst,
     //-- CP0 Functionality --//
     input  Mfc0,                    // CPU instruction is Mfc0
     input  Mtc0,                    // CPU instruction is Mtc0
+	 input [31:0] npc_fromcpu_2,
     //input  IF_Stall,
     //input  ID_Stall,                // Commits are not made during stalls
    // input  COP1,                    // Instruction for Coprocessor 1
@@ -30,13 +32,15 @@ module CP0(
    // input  COP3,                    // Instruction for Coprocessor 3
     input  ERET,                    // Instruction is ERET (Exception Return)
     input  [4:0] Rd,                // Specifies Cp0 register
-    input  [2:0] Sel,               // Specifies Cp0 'select'
+    //input  [2:0] Sel,               // Specifies Cp0 'select'
     input  [31:0] Reg_In,           // Data from GP register to replace CP0 register
     output reg [31:0] Reg_Out,      // Data from CP0 register for GP register
     //output KernelMode,              // Kernel mode indicator for pipeline transit
     //output ReverseEndian,           // Reverse Endian memory indicator for User Mode
-    //-- Hw Interrupts --//
-    input  [4:0] Int,               // Five hardware interrupts external to the processor
+    
+	 //-- Hw Interrupts --//
+    //a new model will handle the interupt case
+	 input  [4:0] Int,               // Five hardware interrupts external to the processor
     //-- Exceptions --//
     input  reset,                   // Cold Reset (EXC_Reset)
 //  input  EXC_SReset,              // Soft Reset (not implemented)
@@ -73,26 +77,26 @@ module CP0(
     //output ID_Exception_Flush,
     //output EX_Exception_Flush,
     //output M_Exception_Flush,
-    output Exc_PC_Sel,              // Mux selector for exception PC override
-    output reg [31:0] Exc_PC_Out,   // Address for PC at the beginning of an exception
-    output [7:0] IP                 // Pending Interrupts from Cause register (for diagnostic purposes)
+    //output Exc_PC_Sel,              // Mux selector for exception PC override
+    output epc   // Address for PC at the beginning of an exception
+    //output [7:0] IP                 // Pending Interrupts from Cause register (for diagnostic purposes)
     );
 
-	reg [31:0] index;//0
-	reg [31:0] random;//1
-	reg [31:0] entrylo0;//2
-	reg [31:0] entrylo1;//3
-	reg [31:0] context;//4
-	reg [31:0] pagemask;//5
-	reg [31:0] wired;//6
-	reg [31:0] hwrena;//7
-	reg [31:0] badvaddr;//8
-	reg [31:0] count;//9
-	reg [31:0] entryhi;//10
-	reg [31:0] compare;//11
-	reg [31:0] sr;//12
-	reg [31:0] cause;//13
-	reg [31:0] epc;//14
+	reg [31:0] r_index;//0
+	reg [31:0] r_random;//1
+	reg [31:0] r_entrylo0;//2
+	reg [31:0] r_entrylo1;//3
+	reg [31:0] r_context;//4
+	reg [31:0] r_pagemask;//5
+	reg [31:0] r_wired;//6
+	reg [31:0] r_hwrena;//7
+	reg [31:0] r_badvaddr;//8
+	reg [31:0] r_count;//9
+	reg [31:0] r_entryhi;//10
+	reg [31:0] r_compare;//11
+	reg [31:0] r_sr;//12
+	reg [31:0] r_cause;//13
+	reg [31:0] r_epc;//14
 	//reg [31:0] prid;//15
 	//reg [31:0] Config;//16
 	//reg [31:0] lladdr;//17
@@ -110,6 +114,5 @@ module CP0(
 	//reg [31:0] errorepc;//30
 	//reg [31:0] desave;//31
 
-
-
+	assign epc = r_epc;
 endmodule

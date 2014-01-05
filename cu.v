@@ -27,6 +27,9 @@ module controlunit(
 		input [4:0] rs,
 		input [4:0] rt,
 		input [4:0] rd,
+		//about cp0
+		input intr,//interupt signal
+		output inta,//interupt ack
 		//input [4:0] sa,//not used so far
 		output rt_sel,	
 		output w,
@@ -40,6 +43,11 @@ module controlunit(
 		output mfhi,
 		output mtlo,
 		output mflo,
+		output mult,
+		output multu,
+		output div,
+		output divu,
+		output [1:0] selpc,//select npc or epc or base
 		//
 		output [3:0] aluc,
 		output wrf,
@@ -172,10 +180,20 @@ assign h = i_lh || i_lhu || i_sh;
 assign b = i_lb || i_lbu || i_sb;
 assign z = i_lhu || i_lbu;
 assign c0_eret = i_eret;
-assign mtc0 = i_mtc0;
-assign mfc0 = i_mfc0;
+assign mtc0 = i_mtc0 | intr;
+assign mfc0 = i_mfc0 | i_iret;
 assign mthi = i_mthi;
 assign mfhi = i_mfhi;
 assign mtlo = i_mtlo;
 assign mflo = i_mflo;
+
+assign selpc[0] = i_eret;
+assign selpc[1] = intr || i_eret; 
+assign inta = intr | i_brak | i_syscall;
+
+assign div = i_div;
+assign divu = i_divu;
+assign mult = i_mult;
+assign multu = i_multu;
+
 endmodule
