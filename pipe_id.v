@@ -59,6 +59,10 @@ module pipe_id(
 		output mtlo,
 		output mfhi,		
 		output mflo,
+		output mult,
+		output multu,
+		output div,
+		output divu,
 		output [1:0] selpc//select npc or epc or base
 		
     );
@@ -109,6 +113,10 @@ controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(
 					.mfhi(rf_mfhi),
 					.mtlo(mtlo),
 					.mflo(mflo),
+					.mult(mult),
+					.multu(multu),
+					.div(div),
+					.divu(divu),
 					.selpc(selpc)//select npc or epc or base
 					);
 mux2x32 rt_mux(.a(rt),.b(5'b00000),.select(rt_sel),.r(ra2));//decide if rt euqals $0

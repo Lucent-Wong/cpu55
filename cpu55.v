@@ -46,7 +46,11 @@ module cpu55(
 		output mthi,
 		output mfhi,
 		output mtlo,
-		output mflo
+		output mflo,
+		output mult,
+		output multu,
+		output div,
+		output divu
     );
 	 
 //for test
@@ -141,7 +145,7 @@ pipe_if pipe_if(.clk(clk), .pc(pc), .ram_ena(iram_ena), .ram_wena(iram_wena), .r
 pipe_id pipe_id(.clk(clk), .rst(rst), .instr(instr), .wd(wrf_data), .rf_wena(rf_wena), .wa(wrf_addr), .zero(zero), .overflow(overflow),.negative(negative), 
 					 .rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .wa_d(wa_f), .imm18(imm18), .index28(index28), .aluc(aluc), .wrf(wrf), .shift(shift),
 					 .immc(immc), .pcsource(pcsource), .wdmem(wdmem), .wdc(wbdc), .aludc(aludc),.w(w),.h(h),.b(b),.z(z),.c0_eret(c0_eret),.mtc0(mtc0),.mfc0(mfc0),
-					.mthi(mthi),.mfhi(mfhi),.mtlo(mtlo),.mflo(mflo), .selpc(selpc),
+					.mthi(mthi),.mfhi(mfhi),.mtlo(mtlo),.mflo(mflo), .mult(mult),.multu(multu),.div(div),.divu(divu),.selpc(selpc),
 					.rdfcp0(rdfcp0));
 pipe_exe pipe_exe(.w(w),.h(h),.b(b),.z(z),.rd1(rd1), .rd2(rd2), .shamt32(shamt32), .imm32(imm32), .pc8(pc8), .immc(immc),
 						.shift(shift_e), .aludc(aludc), .aluc(aluc_e), .wa_f(wa_f), 

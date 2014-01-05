@@ -24,10 +24,10 @@
          <ClosedNode>/cpu_with_cp0 D:|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_if - pipe_if</ClosedNode>
          <ClosedNode>/cpu_with_cp0 D:|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_wb - pipe_wb</ClosedNode>
          <ClosedNode>/cpu_with_cp0 D:|cpu55|cpu_with_cp0.v/cpu - cpu55/pipemem - pipe_mem</ClosedNode>
-         <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55</ClosedNode>
          <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_exe - pipe_exe</ClosedNode>
          <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_id - pipe_id/rf - regfile</ClosedNode>
          <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_if - pipe_if</ClosedNode>
+         <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55/pipe_wb - pipe_wb</ClosedNode>
          <ClosedNode>/cpu_with_cp0 F:|Study|cpu55|cpu_with_cp0.v/cpu - cpu55/pipemem - pipe_mem</ClosedNode>
          <ClosedNode>/regfile D:|cpu55|regfile.v</ClosedNode>
       </ClosedNodes>
@@ -36,7 +36,7 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000020200000001000000010000006400000116000000020000000000000000000000000200000064ffffffff000000810000000300000002000001160000000100000003000000000000000100000003</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000013e000000020000000000000000000000000200000064ffffffff0000008100000003000000020000013e0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
       <CurrentItem>cpu_with_cp0 (F:/Study/cpu55/cpu_with_cp0.v)</CurrentItem>
    </ItemView>

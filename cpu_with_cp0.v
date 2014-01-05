@@ -30,6 +30,10 @@ wire mthi;
 wire mfhi;
 wire mtlo;
 wire mflo;
+wire mult;
+wire multu;
+wire div;
+wire divu;
 wire eret;
 wire [4:0] rda_cp0;	 
 wire [31:0] data_from_cp0; 
@@ -48,8 +52,10 @@ dffe #(32) reg_lo(.clk(clk), .rst(rst), .ena(mtlo), .data_in(data2lo), .data_out
 wire [31:0] data2hi;
 wire [31:0] data2lo;
 
-mux2x32 hiselect(.a(/*乘除法器结果*/),.b(rs2hilo),.select(mthi),.r(data2hi));
-mux2x32 loselect(.a(/*乘除法器结果*/),.b(rs2hilo),.select(mtlo),.r(data2lo));
+mux4x32 hiselect(.a(/*有符号乘法器结果*/),.b(/*无符号乘法器结果*/),.c(rs2hilo),.d(32'bz),.select({mthi , multu}),.r(data2hi));
+mux4x32 loselect(.a(/*有符号除法器结果*/),.b(/*无符号乘法器结果*/),.c(rs2hilo),.d(32'bz),.select({mtlo , divu}),.r(data2lo));
+
+
 CP0 cp0(
 	 .clk(clk),
 	 .rst(rst),
@@ -85,7 +91,7 @@ CP0 cp0(
     .npc_fromcpu(npc_from_cpu)
 	);
 	
-mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo & ~mfc0,(mfhi | mflo) & ~mfc0}),.r(data_2_cpu));
+mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo,mfhi}),.r(data_2_cpu));
 
 cpu55 cpu(
 		.clk(clk),
