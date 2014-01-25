@@ -1,0 +1,1 @@
+vhdtdtfi -lang verilog -prj cpu55 -o F:/Study/cpu55/.tfi -lib work F:/Study/cpu55//cpu_with_cp0.v -module "" -template D:/Xilinx/13.4/ISE_DS/ISE//data/tfi.tft -deleteonerror 

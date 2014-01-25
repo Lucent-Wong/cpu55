@@ -1,0 +1,15 @@
+# Output products list for <MULTU>
+MULTU.asy
+MULTU.gise
+MULTU.ngc
+MULTU.sym
+MULTU.v
+MULTU.veo
+MULTU.xco
+MULTU.xise
+MULTU\doc\mult_gen_ds255.pdf
+MULTU\doc\mult_gen_v11_2_readme.txt
+MULTU\doc\mult_gen_v11_2_vinfo.html
+MULTU_flist.txt
+MULTU_xmdf.tcl
+_xmsgs\pn_parser.xmsgs

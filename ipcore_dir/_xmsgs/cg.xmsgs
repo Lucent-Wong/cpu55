@@ -8,13 +8,10 @@
 <msg type="info" file="sim" num="172" delta="old" >Generating IP...
 </msg>
 
-<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">A core named &apos;iram_ip&apos; already exists in the project. Output products for this core may be overwritten.</arg>
+<msg type="warning" file="sim" num="472" delta="old" >The chosen IP does not support a Verilog behavioral model, generating a Verilog structural model instead.
 </msg>
 
-<msg type="warning" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Can&apos;t find &apos;Verilog&apos; synthesis view; using general synthesis view</arg>
-</msg>
-
-<msg type="info" file="sim" num="0" delta="new" ><arg fmt="%s" index="1">Pre-processing HDL files for &apos;iram_ip&apos;...</arg>
+<msg type="warning" file="coreutil" num="0" delta="new" >WARNING: Default charset GBK not supported, using ISO-8859-1 instead
 </msg>
 
 <msg type="info" file="sim" num="949" delta="old" >Finished generation of ASY schematic symbol.

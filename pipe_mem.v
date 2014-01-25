@@ -40,13 +40,43 @@ wire [15:0] _hword_result;
 wire [31:0] _byte_ext;
 wire [31:0] _hword_ext;
 wire [31:0] _ramindata;
+wire [31:0] hword_in_restult;
+wire [31:0] byte_in_restult;
 
-mux4x32 #(8) byte_mux(.a(_ram_outdata[7:0]),.b(_ram_outdata[15:8]),.c(_ram_outdata[23:16]),.d(_ram_outdata[31:24]),.select(addr[1:0]),.r(_byte_result));
-mux2x32 #(16) word_mux(.a(_ram_outdata[15:0]),.b(_ram_outdata[31:16]),.select(addr[1]),.r(_hword_result));
 
-mux4x32 #(32) ramin(.a(ram_indata),.b({ram_outdata[31:16],ram_indata[15:0]}),.c({ram_outdata[31:8],ram_indata[7:0]}),.d(ram_indata),.select({b,h}),.r(_ramindata));
+mux4x32 #(8) byte_mux(	.a(_ram_outdata[7:0]),
+								.b(_ram_outdata[15:8]),
+								.c(_ram_outdata[23:16]),
+								.d(_ram_outdata[31:24]),
+								.select(addr[1:0]),
+								.r(_byte_result));
+								
+mux2x32 #(16) hword_mux(	.a(_ram_outdata[15:0]),
+									.b(_ram_outdata[31:16]),
+									.select(addr[1]),
+									.r(_hword_result));
 
-assign AddressErr = ~((w && ~(addr[0] || addr[1])) || (h && ~addr[0]) || b);
+mux4x32 #(32) byte_in_mux(	.a({_ram_outdata[31:8],ram_indata[7:0]}),
+									.b({_ram_outdata[31:16],ram_indata[7:0],_ram_outdata[7:0]}),
+									.c({_ram_outdata[31:24],ram_indata[7:0],_ram_outdata[15:0]}),
+									.d({ram_indata[7:0],_ram_outdata[23:0]}),
+									.select(addr[1:0]),
+									.r(byte_in_restult));
+									
+mux2x32 #(32) hword_in_mux(	.a({_ram_outdata[31:16],ram_indata[15:0]}),
+										.b({ram_indata[15:0],_ram_outdata[15:0]}),
+										.select(addr[1]),
+										.r(hword_in_restult));
+
+mux4x32 #(32) ramin(	.a(ram_indata),
+							.b(hword_in_restult),
+							.c(byte_in_restult),
+							.d(ram_indata),
+							.select({b,h}),
+							.r(_ramindata));
+
+assign AddressErr = ((w && (addr[0] || addr[1])) || (h && addr[0]));
+
 assign _ram_ena = (~AddressErr) && ram_ena;
 
 
@@ -57,6 +87,6 @@ data_ram #(8, 0) dram(.clk(clk), .ram_ena(_ram_ena), .wena(ram_wena), .addr(addr
 								 .data_out(_ram_outdata),/*.AddressError(AddressErr),*/
 								 .w(w),.h(h),.b(b),.z(z));
 								 
-mux4x32 #(32) ram_out(.a(32'bz),.b(_byte_ext),.c(_hword_ext),.d(_ram_outdata),.select({(b||w),(h||w)}),.r(ram_outdata));				 
+mux4x32 #(32) ram_out(.a(32'bz),.b(_byte_ext),.c(_hword_ext),.d(_ram_outdata),.select({(h||w),(b||w)}),.r(ram_outdata));				 
 				
 endmodule

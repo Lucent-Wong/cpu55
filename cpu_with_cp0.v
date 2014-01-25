@@ -41,7 +41,7 @@ wire [31:0] data_2_cp0;
 wire [31:0] epc_from_cp0;
 wire addr_err;
 wire [31:0] npc_from_cpu;
-wire [31:0] rs2hilo;
+wire [31:0] rs_2_hilo;
 wire [31:0] data_from_hi;
 wire [31:0] data_from_lo;
 wire [31:0] data_2_cpu;
@@ -52,8 +52,8 @@ dffe #(32) reg_lo(.clk(clk), .rst(rst), .ena(mtlo), .data_in(data2lo), .data_out
 wire [31:0] data2hi;
 wire [31:0] data2lo;
 
-mux4x32 hiselect(.a(/*有符号乘法器结果*/),.b(/*无符号乘法器结果*/),.c(rs2hilo),.d(32'bz),.select({mthi , multu}),.r(data2hi));
-mux4x32 loselect(.a(/*有符号除法器结果*/),.b(/*无符号乘法器结果*/),.c(rs2hilo),.d(32'bz),.select({mtlo , divu}),.r(data2lo));
+mux4x32 hiselect(.a(mult_result/*有符号乘法器结果*/),.b(multu_result/*无符号乘法器结果*/),.c(rs_2_hilo),.d(32'bz),.select({mthi , multu}),.r(data2hi));
+mux4x32 loselect(.a(div_result/*有符号除法器结果*/),.b(divu_result/*无符号乘法器结果*/),.c(rs_2_hilo),.d(32'bz),.select({mtlo , divu}),.r(data2lo));
 
 
 CP0 cp0(
@@ -90,7 +90,19 @@ CP0 cp0(
     //output [7:0] IP                 // Pending Interrupts from Cause register (for diagnostic purposes)
     .npc_fromcpu(npc_from_cpu)
 	);
-	
+
+wire [63:0] mult_result;
+MULT mult(rs_2_hilo, data_2_cp0,mult_result);
+
+wire [63:0] multu_result;
+MULTU multu(rs_2_hilo, data_2_cp0,multu_result);
+
+wire [63:0] div_result;
+DIV div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(div_result[63:32]), .fractional(div_result[31:0]));
+
+wire [63:0] divu_result;
+DIVU divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(divu_result[63:32]), .fractional(divu_result[31:0]));
+
 mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo,mfhi}),.r(data_2_cpu));
 
 cpu55 cpu(
@@ -101,7 +113,7 @@ cpu55 cpu(
 		.add_err(addr_err),								//暂定传给cp0 2013 10 30
 		.rt2cp0(data_2_cp0),							//rt传给cp0寄存器
 		.reg_d(rda_cp0),								//读写cp0的目的寄存器
-		.rs2hilo(rs2hilo),						//rs传给hilo寄存器
+		.rs2hilo(rs_2_hilo),						//rs传给hilo寄存器
 		.npc2c0(npc_from_cpu),						//npc to epc
 		//control flow
 		.c0_eret(eret),

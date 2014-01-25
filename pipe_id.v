@@ -76,10 +76,10 @@ wire sext_s, regwa, sext_i;
 wire rf_w;
 
 wire rf_mfhi;
-output rf_mflo;
+wire rf_mflo;
 //////add by wong////////
 wire rt_sel;
-wire rf_wd;
+wire [31:0] rf_wd;
 wire rf_mfc0;
 mux2x32 wdsel (.a(wd),.b(rdfcp0),.select(rf_mfc0 | rf_mfhi | rf_mflo),.r(rf_wd));
 /////////////////////////
@@ -112,7 +112,7 @@ controlunit cu(.op(op),.func(func),.zero(zero),	.negative(negative),.rs(rs),.rt(
 					.mthi(rf_mthi),
 					.mfhi(rf_mfhi),
 					.mtlo(mtlo),
-					.mflo(mflo),
+					.mflo(rf_mflo),
 					.mult(mult),
 					.multu(multu),
 					.div(div),

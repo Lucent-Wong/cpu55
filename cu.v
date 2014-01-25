@@ -164,9 +164,9 @@ assign pcsource[1] = (i_beq && zero) || (i_bne && zero  == 1'b0) /*add by wong*/
 //regwa选择信号，高电平，目的寄存器为instr[20:16]rt, 低电平，目的寄存器为instr[15:11]rd
 assign regwa = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //alub控制信号， 高电平imm32，低电平rd2
-assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
+assign immc = i_addi || i_addiu || i_andi || i_ori || i_xori || i_slti || i_sltiu || i_lui || i_lw || i_sw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh || i_sh || i_sb;
 //dmem写控制信号，高电平，写数据存储器
-assign wena = i_sw;
+assign wena = i_sw || i_sh || i_sb;
 //写rf寄存器组数据控制信号，高电平：数据寄存器取出的值，低电平，wd
 assign wdc = i_lw /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh;
 //写数据寄存器的数据选择信号，高电平：选择pc+8， 低电平， alud
@@ -181,7 +181,7 @@ assign b = i_lb || i_lbu || i_sb;
 assign z = i_lhu || i_lbu;
 assign c0_eret = i_eret;
 assign mtc0 = i_mtc0 | intr;
-assign mfc0 = i_mfc0 | i_iret;
+assign mfc0 = i_mfc0 | i_eret;
 assign mthi = i_mthi;
 assign mfhi = i_mfhi;
 assign mtlo = i_mtlo;
@@ -189,7 +189,7 @@ assign mflo = i_mflo;
 
 assign selpc[0] = i_eret;
 assign selpc[1] = intr || i_eret; 
-assign inta = intr | i_brak | i_syscall;
+assign inta = intr | i_break | i_syscall;
 
 assign div = i_div;
 assign divu = i_divu;

@@ -1,0 +1,13 @@
+# Output products list for <DIVU>
+DIVU.asy
+DIVU.gise
+DIVU.ngc
+DIVU.sym
+DIVU.v
+DIVU.veo
+DIVU.xco
+DIVU.xise
+DIVU_flist.txt
+DIVU_readme.txt
+DIVU_xmdf.tcl
+_xmsgs\pn_parser.xmsgs
