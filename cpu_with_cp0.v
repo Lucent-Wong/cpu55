@@ -46,14 +46,23 @@ wire [31:0] data_from_hi;
 wire [31:0] data_from_lo;
 wire [31:0] data_2_cpu;
 
-dffe #(32) reg_hi(.clk(clk), .rst(rst), .ena(mthi), .data_in(data2hi), .data_out(data_from_hi));
-dffe #(32) reg_lo(.clk(clk), .rst(rst), .ena(mtlo), .data_in(data2lo), .data_out(data_from_lo));
+wire wen_hi;
+wire wen_lo;
+
+assign wen_hi = mthi | mult | multu | div | divu;
+assign wen_lo = mtlo | mult | multu | div | divu;
+
+myreg reg_hi(.clk(clk), .rst(rst), .ena(mthi), .data_in(data2hi), .data_out(data_from_hi), .wen(wen_hi));
+myreg reg_lo(.clk(clk), .rst(rst), .ena(mtlo), .data_in(data2lo), .data_out(data_from_lo), .wen(wen_lo));
 
 wire [31:0] data2hi;
 wire [31:0] data2lo;
+wire [63:0] mult_and_div_result;
 
-mux4x32 hiselect(.a(mult_result/*有符号乘法器结果*/),.b(multu_result/*无符号乘法器结果*/),.c(rs_2_hilo),.d(32'bz),.select({mthi , multu}),.r(data2hi));
-mux4x32 loselect(.a(div_result/*有符号除法器结果*/),.b(divu_result/*无符号乘法器结果*/),.c(rs_2_hilo),.d(32'bz),.select({mtlo , divu}),.r(data2lo));
+mux4x32 m_d_seleet(.a(mult_result),.b(multu_result),.c(div_result).d(divu_result).select({divu,(multu | divu)}).r(mult_and_div_result));
+
+mux2x32 hiselect(.a(mult_and_div_result[63:32]),.b(rs_2_hilo),.select(),.r(data2hi));
+mux2x32 loselect(.a(mult_and_div_result[31:0]), .b(rs_2_hilo),.select(),.r(data2lo));
 
 
 CP0 cp0(
@@ -122,7 +131,11 @@ cpu55 cpu(
 		.mthi(mthi),
 		.mfhi(mfhi),
 		.mtlo(mtlo),
-		.mflo(mflo)
+		.mflo(mflo),
+		.mult(mult),
+		.multu(multu),
+		.div(div),
+		.divu(divu)
 		);
 
 endmodule

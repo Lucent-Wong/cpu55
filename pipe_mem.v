@@ -83,7 +83,7 @@ assign _ram_ena = (~AddressErr) && ram_ena;
 ext #(8) byte_ext(.a(_byte_result),.sext(~z),.b(_byte_ext));
 ext #(16) word_ext(.a(_hword_result),.sext(~z),.b(_hword_ext));
 
-data_ram #(8, 0) dram(.clk(clk), .ram_ena(_ram_ena), .wena(ram_wena), .addr(addr[9:2]/*should change when the size of memory changed*/), .data_in(_ramindata),
+data_ram #(11, 0) dram(.clk(clk), .ram_ena(_ram_ena), .wena(ram_wena), .addr(addr[12:2]/*should change when the size of memory changed*/), .data_in(_ramindata),
 								 .data_out(_ram_outdata),/*.AddressError(AddressErr),*/
 								 .w(w),.h(h),.b(b),.z(z));
 								 
