@@ -151,7 +151,7 @@ assign aluc[3] = i_sra  || i_srav|| i_sll || i_sllv || i_srl || i_srlv || i_slt 
 //写寄存器组信号
 assign wrf = i_add || i_addu || i_sub   || i_subu || i_and  || i_or   || i_xor  || i_nor   || i_slt  || i_sltu || 
 				 i_sll || i_srl  || i_sra   || i_sllv || i_srlv || i_srav || i_addi || i_addiu || i_andi || i_ori  ||
-				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw || i_jal /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh ||  i_jalr;
+				 i_xori|| i_slti || i_sltiu || i_lui  || i_lw || i_jal /*add by wong*/|| i_lbu || i_lhu || i_lb || i_lh ||  i_jalr || i_mfhi || i_mflo;
 //shamt（instr[10:6]）扩展控制信号，高电平：符号位扩展， 低电平：零扩展
 assign sext_s = i_sll || i_srl || i_sra;
 //imm（instr[15:0]）扩展控制信号， 高电平：符号扩展，低电平：零扩展

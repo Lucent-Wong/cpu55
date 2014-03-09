@@ -49,23 +49,29 @@ wire [31:0] data_2_cpu;
 wire wen_hi;
 wire wen_lo;
 
-assign wen_hi = mthi | mult | multu | div | divu;
-assign wen_lo = mtlo | mult | multu | div | divu;
-
-myreg reg_hi(.clk(clk), .rst(rst), .ena(mthi), .data_in(data2hi), .data_out(data_from_hi), .wen(wen_hi));
-myreg reg_lo(.clk(clk), .rst(rst), .ena(mtlo), .data_in(data2lo), .data_out(data_from_lo), .wen(wen_lo));
-
 wire [31:0] data2hi;
 wire [31:0] data2lo;
 wire [63:0] mult_and_div_result;
 
-mux4x32 m_d_seleet(.a(mult_result),.b(multu_result),.c(div_result).d(divu_result).select({divu,(multu | divu)}).r(mult_and_div_result));
+wire [63:0] mult_result;
+wire [63:0] multu_result;
+wire [63:0] div_result;
+wire [63:0] divu_result;
 
-mux2x32 hiselect(.a(mult_and_div_result[63:32]),.b(rs_2_hilo),.select(),.r(data2hi));
-mux2x32 loselect(.a(mult_and_div_result[31:0]), .b(rs_2_hilo),.select(),.r(data2lo));
+assign wen_hi = mthi | mult | multu | div | divu;
+assign wen_lo = mtlo | mult | multu | div | divu;
+
+myreg reg_hi(.clk(clk), .rst(rst), .data_in(data2hi), .data_out(data_from_hi), .wen(wen_hi));
+myreg reg_lo(.clk(clk), .rst(rst), .data_in(data2lo), .data_out(data_from_lo), .wen(wen_lo));
+
+mux4x32 m_d_seleet(.a(mult_result),.b(multu_result),.c(div_result),.d(divu_result),.select({divu,(multu | divu)}),.r(mult_and_div_result));
+
+mux2x32 hiselect(.a(mult_and_div_result[63:32]),.b(rs_2_hilo),.select(mthi),.r(data2hi));
+mux2x32 loselect(.a(mult_and_div_result[31:0]), .b(rs_2_hilo),.select(mtlo),.r(data2lo));
 
 
-CP0 cp0(
+
+/*CP0 cp0(
 	 .clk(clk),
 	 .rst(rst),
     //-- CP0 Functionality --//
@@ -98,19 +104,16 @@ CP0 cp0(
     .epc(epc_from_cp0),   // Address for PC at the beginning of an exception
     //output [7:0] IP                 // Pending Interrupts from Cause register (for diagnostic purposes)
     .npc_fromcpu(npc_from_cpu)
-	);
+	);*/
 
-wire [63:0] mult_result;
-MULT mult(rs_2_hilo, data_2_cp0,mult_result);
 
-wire [63:0] multu_result;
-MULTU multu(rs_2_hilo, data_2_cp0,multu_result);
+MULT _mult(rs_2_hilo, data_2_cp0,mult_result);
 
-wire [63:0] div_result;
-DIV div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(div_result[63:32]), .fractional(div_result[31:0]));
+MULTU _multu(rs_2_hilo, data_2_cp0,multu_result);
 
-wire [63:0] divu_result;
-DIVU divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(divu_result[63:32]), .fractional(divu_result[31:0]));
+DIV _div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(div_result[63:32]), .fractional(div_result[31:0]));
+
+DIVU _divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(divu_result[63:32]), .fractional(divu_result[31:0]));
 
 mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo,mfhi}),.r(data_2_cpu));
 
@@ -118,7 +121,7 @@ cpu55 cpu(
 		.clk(clk),
 		.rst(rst),		
 		.rdfcp0(data_2_cpu),						//cp0 向cpu传递的数据，hi lo 或者cp0寄存器
-		.ep(cepc_from_cp0),								//epc from cp0 to pc
+		.epc(cepc_from_cp0),								//epc from cp0 to pc
 		.add_err(addr_err),								//暂定传给cp0 2013 10 30
 		.rt2cp0(data_2_cp0),							//rt传给cp0寄存器
 		.reg_d(rda_cp0),								//读写cp0的目的寄存器

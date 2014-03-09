@@ -135,6 +135,7 @@ assign index = instr[25:0];
 assign mfc0 = rf_mfc0;
 assign mfhi = rf_mfhi;
 assign mflo = rf_mflo;
+assign mthi = rf_mthi;
 
 mux2x32 #(5) select_wa(rd, rt, regwa, wa_d);
 
