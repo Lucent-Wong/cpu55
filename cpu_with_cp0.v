@@ -64,7 +64,7 @@ assign wen_lo = mtlo | mult | multu | div | divu;
 myreg reg_hi(.clk(clk), .rst(rst), .data_in(data2hi), .data_out(data_from_hi), .wen(wen_hi));
 myreg reg_lo(.clk(clk), .rst(rst), .data_in(data2lo), .data_out(data_from_lo), .wen(wen_lo));
 
-mux4x32 m_d_seleet(.a(mult_result),.b(multu_result),.c(div_result),.d(divu_result),.select({divu,(multu | divu)}),.r(mult_and_div_result));
+mux4x32 #(64) m_d_seleet(.a(mult_result),.b(multu_result),.c(div_result),.d(divu_result),.select({divu,(multu | divu)}),.r(mult_and_div_result));
 
 mux2x32 hiselect(.a(mult_and_div_result[63:32]),.b(rs_2_hilo),.select(mthi),.r(data2hi));
 mux2x32 loselect(.a(mult_and_div_result[31:0]), .b(rs_2_hilo),.select(mtlo),.r(data2lo));
@@ -111,9 +111,9 @@ MULT _mult(rs_2_hilo, data_2_cp0,mult_result);
 
 MULTU _multu(rs_2_hilo, data_2_cp0,multu_result);
 
-DIV _div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(div_result[63:32]), .fractional(div_result[31:0]));
+DIV _div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(div_result[63:32]), .fractional(div_result[31:0]));
 
-DIVU _divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .quotient(data_2_cp0), .divisor(divu_result[63:32]), .fractional(divu_result[31:0]));
+DIVU _divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(divu_result[63:32]), .fractional(divu_result[31:0]));
 
 mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo,mfhi}),.r(data_2_cpu));
 
