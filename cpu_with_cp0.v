@@ -19,10 +19,11 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module cpu_with_cp0(
-							input clk,
+							input clk_o,
 							input rst
     );
-	 
+wire clk;
+freq_div cpu_with_cp0_div(.clko(clk_o),.clk(clk));	 
 	 
 wire mfc0;
 wire mtc0;

@@ -6,6 +6,7 @@ iram_ip.asy
 iram_ip.gise
 iram_ip.mif
 iram_ip.ngc
+iram_ip.sym
 iram_ip.v
 iram_ip.veo
 iram_ip.xco

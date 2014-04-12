@@ -23,7 +23,7 @@ copy ..\example_design\iram_ip_top.ucf results\
 cd results
 
 echo 'Running ngdbuild'
-ngdbuild -p xc6slx4-tqg144-3 iram_ip_top
+ngdbuild -p xc6slx16-csg324-3 iram_ip_top
 
 echo 'Running map'
 map iram_ip_top -o mapped.ncd -pr i

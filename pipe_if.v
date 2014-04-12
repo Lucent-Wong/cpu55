@@ -43,7 +43,7 @@ wire npc4_carry, npc8_carry; //npc4和npc8产生的进位，这里不使用
 wire [31:0] pc_beqbne, pc_jjal;
 
 `ifndef SIM
-iram_ip your_instance_name (  .clka(clk), // input clka
+iram_ip iram (  .clka(clk), // input clka
 										.ena(ram_ena),
 									  .addra(pc[11:2]), // input [3 : 0] addra
 									  .douta(ram_outdata) // output [31 : 0] douta

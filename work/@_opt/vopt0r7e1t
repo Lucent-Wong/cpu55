@@ -4,27 +4,27 @@ K3
 cModel Technology
 Z0 dD:\cpu55
 T_opt
-Vd1992Jig>zNT1W8BN[QFV3
+VLWVGN]=8P1P<2MoT_^zN[0
 04 6 4 work cpu_tb fast 0
 Z1 04 4 4 work glbl fast 0
-=1-5c63bf1ca254-52ff81f0-228-d5c
+=1-5c63bf1ca254-53495015-33e-3f8c
 Z2 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip +acc
 n@_opt
 Z3 OE;O;10.1a;51
 T_opt1
-V8ORcKIjeTdS?D3hAUil_I2
-04 8 4 work pipe_mem fast 0
+V=eWIA9EX>eWf]=MkdSh3K0
+04 7 4 work iram_tb fast 0
 R1
-=1-5c63bf1ca254-52ff7c34-28f-16b4
+=1-5c63bf1ca254-53494a52-178-5348
 R2
 n@_opt1
 R3
 Z4 dD:\cpu55
 T_opt2
-VXJmMMa?]]MGgQYK2_6_nY3
-04 5 4 work cpu55 fast 0
+VQD6lAakK:356J15eaDIM=2
+04 15 4 work cpu_with_cp0_tb fast 0
 R1
-=1-5c63bf1ca254-52e37230-2ba-16c4
+=1-5c63bf1ca254-531c2bd7-3-ecc
 R2
 n@_opt2
 R3
@@ -43,7 +43,7 @@ r1
 Z8 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
 !s100 :Xo3OdVWX1NGJkUKg=7533
 !s90 -reportprogress|300|add.v|
-!s108 1392476631.939000
+!s108 1397313542.499000
 !s107 add.v|
 !i10b 1
 !s85 0
@@ -61,7 +61,7 @@ r1
 R8
 !s100 XDdfenh24SZ1R7nRBz:G72
 !s90 -reportprogress|300|add1.v|
-!s108 1392476634.505000
+!s108 1397313545.978000
 !s107 add1.v|
 !i10b 1
 !s85 0
@@ -79,7 +79,7 @@ r1
 R8
 !s100 8VAQ?nN8>dgKA7Wh`CZ4H2
 !s90 -reportprogress|300|addsub32.v|
-!s108 1392476635.422000
+!s108 1397313547.261000
 !s107 addsub32.v|
 !i10b 1
 !s85 0
@@ -97,7 +97,7 @@ r1
 R8
 !s100 hFgfo6k<;Onn=m>YbQDeF1
 !s90 -reportprogress|300|alu.v|
-!s108 1392476642.162000
+!s108 1397313552.848000
 !s107 alu.v|
 !i10b 1
 !s85 0
@@ -115,7 +115,7 @@ r1
 R8
 !s100 ;V7MzAWB?fA7gVo1gOCG33
 !s90 -reportprogress|300|barrelshifter32.v|
-!s108 1392476635.112000
+!s108 1397313546.921000
 !s107 barrelshifter32.v|
 !i10b 1
 !s85 0
@@ -133,7 +133,7 @@ r1
 R8
 !s100 EO8fW1L<9c@`2;zL19dlh3
 !s90 -reportprogress|300|bshifter32_carry.v|
-!s108 1392476637.877000
+!s108 1397313550.510000
 !s107 bshifter32_carry.v|
 !i10b 1
 !s85 0
@@ -151,7 +151,7 @@ r1
 R8
 !s100 ;3<D<_:UOj6`6N:Mlz8c62
 !s90 -reportprogress|300|cla_16.v|
-!s108 1392476633.551000
+!s108 1397313544.454000
 !s107 cla_16.v|
 !i10b 1
 !s85 0
@@ -169,7 +169,7 @@ r1
 R8
 !s100 SZGAJVdFg7]7YoRg9^FAQ1
 !s90 -reportprogress|300|cla_2.v|
-!s108 1392476632.312000
+!s108 1397313542.910000
 !s107 cla_2.v|
 !i10b 1
 !s85 0
@@ -187,7 +187,7 @@ r1
 R8
 !s100 bM]X^MX5;6h<B?h;ON7KS0
 !s90 -reportprogress|300|cla_32.v|
-!s108 1392476633.898000
+!s108 1397313544.950000
 !s107 cla_32.v|
 !i10b 1
 !s85 0
@@ -205,7 +205,7 @@ r1
 R8
 !s100 ?knAkz_64H0Hz>hfdMT563
 !s90 -reportprogress|300|cla_4.v|
-!s108 1392476632.784000
+!s108 1397313543.549000
 !s107 cla_4.v|
 !i10b 1
 !s85 0
@@ -223,15 +223,15 @@ r1
 R8
 !s100 X;]o_CKk3Q1L<K4T48HL12
 !s90 -reportprogress|300|cla_8.v|
-!s108 1392476633.176000
+!s108 1397313543.953000
 !s107 cla_8.v|
 !i10b 1
 !s85 0
 vcontrolunit
-IWK9IzENldN5lOoW87Hz933
+IZJgzNXlHIHiGkR[8TWbdV2
 VzLd1VU3FA9YoQ]eDHSTXT2
 R5
-w1390650390
+w1394355118
 8cu.v
 Fcu.v
 L0 21
@@ -239,17 +239,36 @@ R7
 r1
 31
 R8
-!s100 :;DCcj8PL:hPhk5B5:6:m1
+!s100 g6hOPzP^iYRnkR2=W[Ggg3
 !s90 -reportprogress|300|cu.v|
-!s108 1392476641.787000
+!s108 1397313552.486000
 !s107 cu.v|
+!i10b 1
+!s85 0
+vCP0
+IQ_EN1YQQN1@gk`=Gcb2053
+VVDFcUhMeOGSBP1e[g1^nF0
+R5
+w1388902172
+8CP0.v
+FCP0.v
+L0 21
+R7
+r1
+31
+R8
+n@c@p0
+!s100 ILKkQ:dZ5AcYhYYE:eW;a3
+!s90 -reportprogress|300|CP0.v|
+!s108 1394340440.866000
+!s107 CP0.v|
 !i10b 1
 !s85 0
 vcpu55
 IFn[lmkzR97UMJe<[;VjD=1
 V>`=^<KFJz8d8k;H35^LOn0
 R5
-w1388937340
+w1397313508
 8cpu55.v
 Fcpu55.v
 L0 22
@@ -259,7 +278,7 @@ r1
 R8
 !s100 9PjU02J;De?b^go[YQe@P0
 !s90 -reportprogress|300|cpu55.v|
-!s108 1392476646.172000
+!s108 1397313555.686000
 !s107 globaldefine.v|cpu55.v|
 !i10b 1
 !s85 0
@@ -277,8 +296,44 @@ r1
 R8
 !s100 b6RE`B[4lHG1gPmk`e>kV1
 !s90 -reportprogress|300|cpu_tb.v|
-!s108 1392476646.562000
+!s108 1397313556.174000
 !s107 cpu_tb.v|
+!i10b 1
+!s85 0
+vcpu_with_cp0
+IM@KcjQkCa>5[G59g=H`Z90
+V8<@kllDl^;7:S<4[a^SeL2
+R5
+w1394349834
+8cpu_with_cp0.v
+Fcpu_with_cp0.v
+L0 21
+R7
+r1
+31
+R8
+!s100 TH5[OM9a06=CRSXC0][cn2
+!s90 -reportprogress|300|cpu_with_cp0.v|
+!s108 1394355200.787000
+!s107 cpu_with_cp0.v|
+!i10b 1
+!s85 0
+vcpu_with_cp0_tb
+IigolEajTZ;dU;_l9HG<K=3
+VBON9>6HikYC4^M76dR7N?2
+R5
+w1393750669
+8cpu_with_cp0_tb.v
+Fcpu_with_cp0_tb.v
+L0 25
+R7
+r1
+31
+R8
+!s100 V>3a?KM4Yz@c0JY[1noef0
+!s90 -reportprogress|300|cpu_with_cp0_tb.v|
+!s108 1394355201.074000
+!s107 cpu_with_cp0_tb.v|
 !i10b 1
 !s85 0
 vcu_tb
@@ -313,7 +368,7 @@ r1
 R8
 !s100 :E9;c]_C>c[ZWhA]d5?162
 !s90 -reportprogress|300|data_ram.v|
-!s108 1392476639.210000
+!s108 1397313552.148000
 !s107 data_ram.v|
 !i10b 1
 !s85 0
@@ -349,7 +404,7 @@ r1
 R8
 !s100 ^SRkD`D6Vh[N1<nJ0l?AB0
 !s90 -reportprogress|300|decoder.v|
-!s108 1392476637.596000
+!s108 1397313550.109000
 !s107 decoder.v|
 !i10b 1
 !s85 0
@@ -385,8 +440,46 @@ r1
 R8
 !s100 KTA^9XGE2CVWkP6nXhTmN3
 !s90 -reportprogress|300|dffe.v|
-!s108 1392476645.872000
+!s108 1397313555.319000
 !s107 dffe.v|
+!i10b 1
+!s85 0
+vDIV
+IZE_9MHTUmF[9:D@2k;ga:3
+V1n^QU98Oo4AZ4lPO0L40e1
+R5
+w1389514213
+8ipcore_dir/DIV.v
+Fipcore_dir/DIV.v
+L0 36
+R7
+r1
+31
+R8
+n@d@i@v
+!s100 TX4NA@n^?6h4nXBJRWb5l3
+!s108 1394355199.213000
+!s107 ipcore_dir/DIV.v|
+!s90 -reportprogress|300|ipcore_dir/DIV.v|
+!i10b 1
+!s85 0
+vDIVU
+I4jg7U9hk;Mnb[^P2Eze163
+VimKgAcC_bBUUe`C7>IHKV2
+R5
+w1389515509
+8ipcore_dir/DIVU.v
+Fipcore_dir/DIVU.v
+L0 36
+R7
+r1
+31
+R8
+n@d@i@v@u
+!s100 `jnmSzWVIkfEGXhCKgUHL1
+!s108 1394355198.138000
+!s107 ipcore_dir/DIVU.v|
+!s90 -reportprogress|300|ipcore_dir/DIVU.v|
 !i10b 1
 !s85 0
 vext
@@ -403,7 +496,7 @@ r1
 R8
 !s100 <fHR2_>fl1>6_U?SzdW=70
 !s90 -reportprogress|300|ext.v|
-!s108 1392476638.887000
+!s108 1397313551.712000
 !s107 ext.v|
 !i10b 1
 !s85 0
@@ -421,7 +514,7 @@ r1
 R8
 !s100 dIIEiXCP<^dd1QgF5Sjf_0
 !s90 -reportprogress|300|file_write.v|
-!s108 1392476634.811000
+!s108 1397313546.514000
 !s107 file_write.v|
 !i10b 1
 !s85 0
@@ -439,8 +532,26 @@ r1
 R8
 !s100 GKS2Zki9::KaG=R_OK@9O2
 !s90 -reportprogress|300|file_write_regfiles.v|
-!s108 1392476637.303000
+!s108 1397313549.763000
 !s107 file_write_regfiles.v|
+!i10b 1
+!s85 0
+vfreq_div
+IA6[9Jag5FJ`1<nS0SfRg40
+VRN>J3=[i5OCSacdVJZndo1
+R5
+w1396183632
+8freq_div.v
+Ffreq_div.v
+L0 21
+R7
+r1
+31
+R8
+!s100 =69;n=Qb^V:k>V?VWQ4oE3
+!s108 1397313483.035000
+!s107 freq_div.v|
+!s90 -reportprogress|300|freq_div.v|
 !i10b 1
 !s85 0
 vg_p
@@ -457,7 +568,7 @@ r1
 R8
 !s100 d@P>RY;139U`zjOha9m:61
 !s90 -reportprogress|300|g_p.v|
-!s108 1392476626.205000
+!s108 1397313542.069000
 !s107 g_p.v|
 !i10b 1
 !s85 0
@@ -477,13 +588,13 @@ R8
 !s90 -reportprogress|300|D:/Xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v|
 !i10b 1
 !s85 0
-!s108 1392476646.891000
+!s108 1397313556.576000
 !s107 D:/Xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v|
 viram_ip
 In7=5g5Q;f?JFI:KW8U9^V1
 VHCGhS;1H<>fnPRMTkf>jn3
 R5
-w1386134047
+w1397313013
 8ipcore_dir/iram_ip.v
 Fipcore_dir/iram_ip.v
 L0 39
@@ -493,8 +604,64 @@ r1
 R8
 !s100 An?nh8Ii[O=D`F75V2GSY3
 !s90 -reportprogress|300|ipcore_dir/iram_ip.v|
-!s108 1390638611.951000
+!s108 1397313551.367000
 !s107 ipcore_dir/iram_ip.v|
+!i10b 1
+!s85 0
+viram_tb
+I>Fl=d77Tb34e>;SimJSY73
+V3P:CUZK_nTGb_Amaij[o=1
+R5
+w1397312055
+8iram_ip_tb.v
+Firam_ip_tb.v
+L0 26
+R7
+r1
+31
+R8
+!s100 HRD<N0=DW<KIIM85X3e_J3
+!s90 -reportprogress|300|iram_ip_tb.v|
+!s108 1397313111.417000
+!s107 iram_ip_tb.v|
+!i10b 1
+!s85 0
+vMULT
+IWjLI9[ojVZX;hFXEeQP6f2
+VV6IC9oS?EW=@@RhPHX]<b1
+R5
+w1389512916
+8ipcore_dir/MULT.v
+Fipcore_dir/MULT.v
+L0 36
+R7
+r1
+31
+R8
+n@m@u@l@t
+!s100 JS^YdnH9aiIC[JUFe>>;f0
+!s108 1394355197.578000
+!s107 ipcore_dir/MULT.v|
+!s90 -reportprogress|300|ipcore_dir/MULT.v|
+!i10b 1
+!s85 0
+vMULTU
+IaZE^Ba<b@KQQ=_d^WMPVW1
+V0AP<NlB^2>>6E4iILkB^C3
+R5
+w1389513759
+8ipcore_dir/MULTU.v
+Fipcore_dir/MULTU.v
+L0 36
+R7
+r1
+31
+R8
+n@m@u@l@t@u
+!s100 ]]1gnEa?]^]VPab956ng;1
+!s108 1394355196.923000
+!s107 ipcore_dir/MULTU.v|
+!s90 -reportprogress|300|ipcore_dir/MULTU.v|
 !i10b 1
 !s85 0
 vmux2x32
@@ -511,7 +678,7 @@ r1
 R8
 !s100 o5;69?mN:R@0iQ0@:ZR?K1
 !s90 -reportprogress|300|mux2x32.v|
-!s108 1392476636.965000
+!s108 1397313549.358000
 !s107 mux2x32.v|
 !i10b 1
 !s85 0
@@ -529,7 +696,7 @@ r1
 R8
 !s100 YbF@IF[f@PkJ5B`cNl9il1
 !s90 -reportprogress|300|mux32x32.v|
-!s108 1392476636.711000
+!s108 1397313548.990000
 !s107 mux32x32.v|
 !i10b 1
 !s85 0
@@ -565,7 +732,7 @@ r1
 R8
 !s100 Ycmd=Hhfe0=8I<E>3]BHg2
 !s90 -reportprogress|300|mux4x32.v|
-!s108 1392476636.272000
+!s108 1397313548.544000
 !s107 mux4x32.v|
 !i10b 1
 !s85 0
@@ -573,7 +740,7 @@ vmyreg
 I11BhD@gaEfScHKJ3K2z;71
 VFMNSlCMf4BgNnoETiBZjB0
 R5
-w1381582180
+w1394343847
 8reg.v
 Freg.v
 L0 21
@@ -583,7 +750,7 @@ r1
 R8
 !s100 GO;6gGa0eoDK@4>EJ`TmQ3
 !s90 -reportprogress|300|reg.v|
-!s108 1392476635.987000
+!s108 1397313548.104000
 !s107 reg.v|
 !i10b 1
 !s85 0
@@ -619,15 +786,15 @@ r1
 R8
 !s100 cgkXkNjEcCXQ<@LdD7kcF3
 !s90 -reportprogress|300|pipe_exe.v|
-!s108 1392476645.614000
+!s108 1397313554.940000
 !s107 pipe_exe.v|
 !i10b 1
 !s85 0
 vpipe_id
-IQkSl@oW2190Z4kMOCnW?_1
+I5@6U^bFkkMYAA:mLE5U6l0
 V0?O]ZfgFE]kCo4jAVe=oP3
 R5
-w1390641590
+w1394354490
 8pipe_id.v
 Fpipe_id.v
 L0 21
@@ -635,17 +802,17 @@ R7
 r1
 31
 R8
-!s100 :KX9^lzLlY[i?CaIR<dgb0
+!s100 3O1MP[j4UIES<_GR;G0;J3
 !s90 -reportprogress|300|pipe_id.v|
-!s108 1392476645.289000
+!s108 1397313554.477000
 !s107 pipe_id.v|
 !i10b 1
 !s85 0
 vpipe_if
-IPCX2P==Bha^lhbB>g@b1?2
+I0f;N`gB2gE46zFdZMUUPG2
 VQ]K_zEc?D4OIZW`O83hlR0
 R5
-w1390638934
+w1397311365
 8pipe_if.v
 Fpipe_if.v
 L0 25
@@ -653,9 +820,9 @@ R7
 r1
 31
 R8
-!s100 >d:iA5AJX@anIKQVP:K2R3
+!s100 iNM1lWjYOUC`cRNC8^Xb<0
 !s90 -reportprogress|300|pipe_if.v|
-!s108 1392476645.031000
+!s108 1397313554.136000
 !s107 globaldefine.v|pipe_if.v|
 !i10b 1
 !s85 0
@@ -671,9 +838,9 @@ R7
 r1
 31
 R8
-!s90 -reportprogress|300|pipe_mem.v|
 !s100 bQ>:GXEO[kDXlT_NUI?jU1
-!s108 1392476642.796000
+!s90 -reportprogress|300|pipe_mem.v|
+!s108 1397313553.636000
 !s107 pipe_mem.v|
 !i10b 1
 !s85 0
@@ -691,7 +858,7 @@ r1
 R8
 !s100 z^o[=V?h]bo2X[NM6gN@f2
 !s90 -reportprogress|300|pipe_wb.v|
-!s108 1392476642.472000
+!s108 1397313553.206000
 !s107 pipe_wb.v|
 !i10b 1
 !s85 0
@@ -709,7 +876,7 @@ r1
 R8
 !s100 KJJ;L92iD1kF0]dRknK332
 !s90 -reportprogress|300|ram.v|
-!s108 1392476638.579000
+!s108 1396941585.002000
 !s107 ram.v|
 !i10b 1
 !s85 0
@@ -727,7 +894,7 @@ r1
 R8
 !s100 MH;[M2Q=>d_2cFYBJghYW1
 !s90 -reportprogress|300|regfile.v|
-!s108 1392476638.227000
+!s108 1397313550.940000
 !s107 regfile.v|
 !i10b 1
 !s85 0
@@ -763,7 +930,7 @@ r1
 R8
 !s100 ISGR[IVbWb:4RamzL>Ck41
 !s90 -reportprogress|300|slt.v|
-!s108 1392476635.675000
+!s108 1397313547.624000
 !s107 slt.v|
 !i10b 1
 !s85 0
@@ -781,7 +948,7 @@ r1
 R8
 !s100 hENihd17I[6;mBFWXI3ld2
 !s90 -reportprogress|300|top_cla_32.v|
-!s108 1392476634.193000
+!s108 1397313545.456000
 !s107 top_cla_32.v|
 !i10b 1
 !s85 0
