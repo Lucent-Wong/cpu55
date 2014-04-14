@@ -30,7 +30,7 @@ module cpu_with_cp0_tb;
 
 	// Instantiate the Unit Under Test (UUT)
 	cpu_with_cp0 uut (
-		.clk(clk), 
+		.clk_o(clk), 
 		.rst(rst)
 	);
 

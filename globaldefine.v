@@ -19,4 +19,4 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 //if SIM define the ROM ip core won't be compile,so that the design can only run in modelsim
-//`define SIM
+`define SIM

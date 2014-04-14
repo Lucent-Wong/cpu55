@@ -91,6 +91,7 @@
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="data_ram.fdo"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="datamen_tb.fdo"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="decoder_tb.fdo"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="div_tb.fdo"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_MODELSIM_CMD" xil_pn:name="file_write.fdo"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
@@ -119,9 +120,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1397313525" xil_pn:in_ck="8610913318188410966" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1397313525">
+    <transform xil_pn:end_ts="1397470400" xil_pn:in_ck="-6140067730320846542" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1397470400">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CP0.v"/>
       <outfile xil_pn:name="add.v"/>
       <outfile xil_pn:name="add1.v"/>
@@ -145,6 +150,7 @@
       <outfile xil_pn:name="decoder.v"/>
       <outfile xil_pn:name="decoder_tb.v"/>
       <outfile xil_pn:name="dffe.v"/>
+      <outfile xil_pn:name="div_tb.v"/>
       <outfile xil_pn:name="ext.v"/>
       <outfile xil_pn:name="file_write.v"/>
       <outfile xil_pn:name="file_write_regfiles.v"/>
@@ -170,11 +176,11 @@
       <outfile xil_pn:name="test.v"/>
       <outfile xil_pn:name="top_cla_32.v"/>
     </transform>
-    <transform xil_pn:end_ts="1397313455" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-5112759021028577068" xil_pn:start_ts="1397313455">
+    <transform xil_pn:end_ts="1397470400" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-1357655109289208655" xil_pn:start_ts="1397470400">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1397313455" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-4067276306017668974" xil_pn:start_ts="1397313455">
+    <transform xil_pn:end_ts="1397470400" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="-4960833749935067537" xil_pn:start_ts="1397470400">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
@@ -190,9 +196,14 @@
       <outfile xil_pn:name="ipcore_dir/MULTU.ngc"/>
       <outfile xil_pn:name="ipcore_dir/MULTU.v"/>
     </transform>
-    <transform xil_pn:end_ts="1397313525" xil_pn:in_ck="-8267734195365810666" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1397313525">
+    <transform xil_pn:end_ts="1397470400" xil_pn:in_ck="-6140067730320846542" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1397470400">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CP0.v"/>
       <outfile xil_pn:name="add.v"/>
       <outfile xil_pn:name="add1.v"/>
@@ -216,16 +227,13 @@
       <outfile xil_pn:name="decoder.v"/>
       <outfile xil_pn:name="decoder_tb.v"/>
       <outfile xil_pn:name="dffe.v"/>
+      <outfile xil_pn:name="div_tb.v"/>
       <outfile xil_pn:name="ext.v"/>
       <outfile xil_pn:name="file_write.v"/>
       <outfile xil_pn:name="file_write_regfiles.v"/>
       <outfile xil_pn:name="freq_div.v"/>
       <outfile xil_pn:name="g_p.v"/>
       <outfile xil_pn:name="globaldefine.v"/>
-      <outfile xil_pn:name="ipcore_dir/DIV.v"/>
-      <outfile xil_pn:name="ipcore_dir/DIVU.v"/>
-      <outfile xil_pn:name="ipcore_dir/MULT.v"/>
-      <outfile xil_pn:name="ipcore_dir/MULTU.v"/>
       <outfile xil_pn:name="iram_ip_tb.v"/>
       <outfile xil_pn:name="mux2x32.v"/>
       <outfile xil_pn:name="mux32x32.v"/>
@@ -245,10 +253,15 @@
       <outfile xil_pn:name="test.v"/>
       <outfile xil_pn:name="top_cla_32.v"/>
     </transform>
-    <transform xil_pn:end_ts="1397314187" xil_pn:in_ck="8013995472947151882" xil_pn:name="TRAN_MSimulateBehavioralModel" xil_pn:prop_ck="1703398720594497807" xil_pn:start_ts="1397314185">
+    <transform xil_pn:end_ts="1397470401" xil_pn:in_ck="3846691395662831846" xil_pn:name="TRAN_MSimulateBehavioralModel" xil_pn:prop_ck="1703398720594497807" xil_pn:start_ts="1397470400">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <outfile xil_pn:name="cpu_tb.fdo"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <outfile xil_pn:name="cpu_with_cp0_tb.fdo"/>
       <outfile xil_pn:name="vsim.wlf"/>
       <outfile xil_pn:name="work"/>
     </transform>

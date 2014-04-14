@@ -36,8 +36,8 @@ wire multu;
 wire div;
 wire divu;
 wire eret;
-wire [4:0] rda_cp0;	 
-wire [31:0] data_from_cp0; 
+wire [4:0] rda_cp0;
+wire [31:0] data_from_cp0;
 wire [31:0] data_2_cp0;
 wire [31:0] epc_from_cp0;
 wire addr_err;
@@ -112,9 +112,10 @@ MULT _mult(rs_2_hilo, data_2_cp0,mult_result);
 
 MULTU _multu(rs_2_hilo, data_2_cp0,multu_result);
 
-DIV _div(.rfd(), .clk(clk), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(div_result[63:32]), .fractional(div_result[31:0]));
+//除法的结果要再两个clk_o之后才可以使用
+DIV _div(.rfd(), .clk(clk_o), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(div_result[63:32]), .fractional(div_result[31:0]));
 
-DIVU _divu(.rfd(), .clk(clk), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(divu_result[63:32]), .fractional(divu_result[31:0]));
+DIVU _divu(.rfd(), .clk(clk_o), .dividend(rs_2_hilo), .divisor(data_2_cp0), .quotient(divu_result[63:32]), .fractional(divu_result[31:0]));
 
 mux4x32 data2cpu(.a(data_from_cp0),.b(data_from_hi),.c(data_from_lo),.d(32'bz),.select({mflo,mfhi}),.r(data_2_cpu));
 
